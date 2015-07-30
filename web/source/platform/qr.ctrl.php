@@ -6,7 +6,7 @@
 
 defined('IN_IA') or exit('Access Denied');
 
-$dos = array('display', 'post', 'list', 'del', 'delsata', 'extend', 'SubDisplay');
+$dos = array('display', 'post', 'list', 'detail', 'del', 'delsata', 'extend', 'SubDisplay');
 $do = !empty($_GPC['do']) && in_array($do, $dos) ? $do : 'list';
 load()->model('account');
 if($do == 'list') {
@@ -24,7 +24,7 @@ if($do == 'list') {
 	$pindex = max(1, intval($_GPC['page']));
 	$psize = 20;
 	$list = pdo_fetchall("SELECT * FROM ".tablename('qrcode'). $wheresql . ' ORDER BY `id` DESC LIMIT '.($pindex - 1) * $psize.','. $psize);
-	foreach ($list as $key=>$value) {
+    foreach ($list as $key=>$value) {
 		$list[$key]['uniname'] = $acidarr[$value['acid']]['name'];
 	}
 	if (!empty($list)) {
@@ -35,6 +35,7 @@ if($do == 'list') {
 				$qrcode['endtime'] = '<font color="red">已过期</font>';
 			}else{
 				$qrcode['endtime'] = date('Y-m-d H:i:s',$qrcode['endtime']);
+
 			}
 			if ($qrcode['model'] == 2) {
 				$qrcode['modellabel']="永久";
@@ -193,7 +194,6 @@ if($do == 'display') {
 	$pindex = max(1, intval($_GPC['page']));
 	$psize = 10;
 	$list = pdo_fetchall("SELECT * FROM ".tablename('qrcode_stat')." WHERE uniacid = '{$_W['uniacid']}' $where ORDER BY id DESC LIMIT ".($pindex - 1) * $psize.','. $psize);
-
 	if (!empty($list)) {
 		$openid = array();
 		foreach ($list as $index => &$qrcode) {
@@ -219,6 +219,52 @@ if($do == 'display') {
 	$total = pdo_fetchcolumn('SELECT COUNT(*) FROM ' . tablename('qrcode_stat') . " WHERE uniacid = '{$_W['uniacid']}' $where");
 	$pager = pagination($total, $pindex, $psize);
 	template('platform/qr-display');
+}
+
+if($do == 'detail') {
+    $_W['page']['title'] = '推广渠道详情 - 扫描统计 - 二维码管理';
+    load()->func('tpl');
+    $acidarr = uni_accounts($_W['uniacid']);
+    intval($_GPC['qrcid']) > 0 && $where .= ' AND qrcid = ' . intval($_GPC['qrcid']) . ' AND type = 1';
+    intval($_GPC['qrcid']) > 0 && $where2 = ' AND qrcid = ' . intval($_GPC['qrcid']);
+
+
+    $pindex = max(1, intval($_GPC['page']));
+    $psize = 10;
+    $list = pdo_fetchall("SELECT * FROM ".tablename('qrcode_stat')." WHERE uniacid = '{$_W['uniacid']}' $where group by openid ORDER BY id DESC LIMIT ".($pindex - 1) * $psize.','. $psize);
+    $total = pdo_fetchcolumn('SELECT COUNT(*) FROM ' . tablename('qrcode_stat') . " WHERE uniacid = '{$_W['uniacid']}' $where group by openid");
+    $recomendInfo = pdo_fetchall("SELECT * FROM ".tablename('qrcode')." WHERE uniacid = '{$_W['uniacid']}' $where2") ;
+//    var_dump($recomendInfo);
+    $recomendqrcode['url'] = 'https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=' . urlencode($recomendInfo[0]['ticket']);
+    $recomendqrcode['time'] =  $recomendInfo[0]['createtime'] + $recomendInfo[0]['expire'];
+    $recomendqrcode['time'] = date('Y-m-d H:i:s',$recomendqrcode['time']);
+    $recomendqrcode['name'] = $recomendInfo[0]['name'];
+//    var_dump($recomendqrcode);
+    if (!empty($list)) {
+        $openid = array();
+        foreach ($list as $index => &$qrcode) {
+            if ($qrcode['type'] == 1) {
+                $qrcode['type']="关注";
+            } else {
+                $qrcode['type']="扫描";
+            }
+            if(!in_array($qrcode['openid'], $openid)) {
+                $openid[] = $qrcode['openid'];
+            }
+        }
+        $openids = implode("','", $openid);
+        $acid = intval($_GPC['acid']);
+        $param[':uniacid'] = $_W['uniacid'];
+        $condition = '';
+        if($acid > 0) {
+            $condition = ' AND acid = :acid';
+            $param[':acid'] = $acid;
+        }
+        $nickname = pdo_fetchall('SELECT nickname, openid FROM ' . tablename('mc_mapping_fans') . " WHERE uniacid = :uniacid " .$condition." AND openid IN ('{$openids}')", $param, 'openid');
+    }
+    $total = pdo_fetchcolumn('SELECT COUNT(*) FROM ' . tablename('qrcode_stat') . " WHERE uniacid = '{$_W['uniacid']}' $where");
+    $pager = pagination($total, $pindex, $psize);
+    template('platform/qr-list-detail');
 }
 
 if($do == 'delsata') {

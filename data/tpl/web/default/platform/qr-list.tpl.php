@@ -43,7 +43,7 @@
 					<th style="width:100px;">关联关键字</th>
 					<th style="width:100px;">所属公众号</th>
 					<th style="width:70px;">二维码类型</th>
-					<th style="width:80px;">过期时间</th>
+					<th style="width:80px;">推广详情</th>
 					<th style="width:100px;">场景ID<i></i></th>
 					<th style="width:50px;">二维码</th>
 					<th style="width:190px;">url</th>
@@ -59,7 +59,7 @@
 					<td><a href="javascript:void(0);" title="<?php  echo $row['keyword'];?>"><?php  echo cutstr($row['keyword'], 8)?></a></td>
 					<td><?php  echo $row['uniname'];?></td>
 					<td><?php  echo $row['modellabel'];?></td>
-					<td><?php  echo $row['expire'];?></td>
+					<td><a href="<?php  echo url('platform/qr/detail', array('qrcid'=>$row['qrcid']))?>" target="_blank">查看推广</a></td>
 					<td><?php  echo $row['qrcid'];?></td>
 					<td><a href="<?php  echo $row['showurl'];?>" target="_blank">查看</a></td>
 					<td><a href="<?php  echo $row['url'];?>" target="_blank" title="<?php  echo $row['url'];?>"><?php  echo $row['url'];?></a></td>
