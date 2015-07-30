@@ -1,0 +1,446 @@
+/* 清理浮动 */
+.fn-clear:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0; }
+
+.fn-clear {
+  zoom: 1;
+  /* for IE6 IE7 */ }
+
+/* 隐藏, 通常用来与 JS 配合 */
+body .fn-hide {
+  display: none !important; }
+
+/* 设置内联, 减少浮动带来的bug */
+.fn-left, .fn-right {
+  display: inline; }
+
+.fn-left {
+  float: left; }
+
+.fn-right {
+  float: right; }
+
+/* 居中 */
+.m0a {
+  margin: 0 auto; }
+
+/*周兴天  2015-03-17*/
+body {
+  display: none; }
+
+.yousi_title {
+  color: #ffffff; }
+
+.index_img img {
+  width: 100%; }
+
+.index_btn {
+  padding-top: 1em;
+  padding-bottom: 1em; }
+
+.index_text {
+  text-align: center; }
+
+.footer_right {
+  float: right;
+  padding: 1em 2em 1em 2em;
+  background: #26a69a; }
+
+.footer_right a {
+  color: #ffffff !important;
+  text-decoration: NONE; }
+
+.footer_left {
+  float: left;
+  padding-left: 1em;
+  padding-top: 1em; }
+
+.footer_left a {
+  text-decoration: NONE;
+  border: 1px solid #fb8c00;
+  padding: 0.5em;
+  color: #FFFFFF !important;
+  background: #ffa726;
+  -moz-border-radius: 0.4em;
+  -webkit-border-radius: 0.4em;
+  border-radius: 0.4em; }
+
+.fc_white {
+  color: #ffffff !important; }
+
+.jiage_dep {
+  height: 4em;
+  padding-top: 1em !important;
+  padding-bottom: 1em !important; }
+
+.jiage_dep2 {
+  height: 2em;
+  padding-top: 1em !important; }
+
+.jiage_dep2_num {
+  float: right; }
+
+.jiage_dep3 {
+  padding-top: 1em !important;
+  padding-bottom: 1em !important;
+  font-weight: 600; }
+
+.jiage_dep3_num {
+  color: green;
+  float: right; }
+
+.jiage_dep4 {
+  padding-top: 1em !important;
+  padding-bottom: 1em !important;
+  font-size: 0.8em; }
+
+.jiage_dep4_num {
+  float: right; }
+
+.no_dingdan {
+  text-align: center;
+  margin: 0 auto; }
+
+.weifukuan {
+  font-size: 0.8em;
+  margin-bottom: 1em; }
+
+.dingdan_title {
+  background: #29b6f6;
+  border: 1px solid #039be5;
+  padding: 0.5em 1em;
+  color: #fff; }
+
+.dingdan_title_time {
+  float: right; }
+
+.dingdan_dep {
+  border: 1px solid #dddddd;
+  padding: 0 1em; }
+
+.dingdan_notice {
+  border-left: 1px solid #dddddd;
+  border-right: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+  padding: 0.5em 1em;
+  color: red; }
+
+.dingdan_notice span {
+  float: right; }
+
+.dingdan_notice b {
+  color: #23A6E2; }
+
+.dingdan_dep_left {
+  float: left;
+  display: block;
+  width: 66.6%; }
+
+.dingdan_dep_right {
+  float: right;
+  padding-top: 4em !important;
+  text-align: center; }
+
+.dingdan_dep_right .abtn {
+  text-decoration: NONE;
+  border: 1px solid #fb8c00;
+  padding: 0.5em;
+  color: #FFFFFF !important;
+  background: #ffa726;
+  -moz-border-radius: 0.4em;
+  -webkit-border-radius: 0.4em;
+  border-radius: 0.4em; }
+
+.dingdan_dep_right .bbtn {
+  text-decoration: NONE;
+  border: 1px solid #f4511e;
+  padding: 0.5em;
+  color: #FFFFFF !important;
+  background: #ff7043;
+  -moz-border-radius: 0.4em;
+  -webkit-border-radius: 0.4em;
+  border-radius: 0.4em; }
+
+.dingdan_dep_right .cbtn {
+  text-decoration: NONE;
+  border: 1px solid #546e7a;
+  padding: 0.5em;
+  color: #FFFFFF !important;
+  background: #78909c;
+  -moz-border-radius: 0.4em;
+  -webkit-border-radius: 0.4em;
+  border-radius: 0.4em; }
+
+.dingdan_dep_right .dbtn {
+  text-decoration: NONE;
+  border: 1px solid #bbbbbb;
+  padding: 0.5em;
+  color: #000000 !important;
+  background: #FFFFFF;
+  -moz-border-radius: 0.4em;
+  -webkit-border-radius: 0.4em;
+  border-radius: 0.4em; }
+
+.orderDetailBtn {
+  margin-left: 1em;
+  color: #ffffff !important; }
+
+.dingdan_photo {
+  padding: 0.1em; }
+
+.dingdan_photo em {
+  width: 3em;
+  height: 4.2em; }
+
+.dingdan_photo em img {
+  width: 3em;
+  height: 3em;
+  border-radius: 3em; }
+
+.padding_top_1 {
+  padding-top: 2em; }
+
+#mypanel {
+  background: #78909c;
+  border: 1px solid #546e7a;
+  text-shadow: none !important; }
+
+.panel_ul {
+  list-style: none;
+  color: #ffffff;
+  padding: 0 !important; }
+
+.panel_notice {
+  margin-top: 4em;
+  color: #ffffff; }
+
+.fufeiuser {
+  text-decoration: NONE;
+  border: 1px solid #fb8c00;
+  padding: 0.2em;
+  color: #FFFFFF !important;
+  background: #ffa726;
+  -moz-border-radius: 0.4em;
+  -webkit-border-radius: 0.4em;
+  border-radius: 0.4em; }
+
+/*教员*/
+.jy_dingdan_title {
+  background: #26a69a;
+  border: 1px solid #00897b;
+  padding: 0.5em 1em; }
+
+.account .getverify input {
+  min-height: 2.7em; }
+.account .getverify .ui-block-b {
+  padding-left: 1em; }
+
+.order .mulbtn_wrap {
+  padding-top: 2em; }
+.order .onebtn_wrap {
+  padding-top: 4.5em; }
+
+/*
+******* 首页
+*/
+.index_school_evaluate {
+  width: 100%;
+  padding: 0.5em 0;
+  text-align: center;
+  border: #BCBCBC solid 1px; }
+
+.index_evaluate_list, .index_evaluate_list li {
+  border: none !important;
+  box-shadow: none !important; }
+
+.index_evaluate_list li:nth-child(1) {
+  border-bottom: #ccc solid 1px !important;
+  margin-bottom: 0.5em !important;
+  padding-bottom: 0.5em; }
+
+.index_evaluate_list .fn-left, .index_evaluate_list .fn-left img {
+  width: 5em;
+  height: 5em; }
+
+.index_evaluate_list .fn-right {
+  width: -moz-calc(100% - 5.5em);
+  width: -webkit-calc(100% - 5.5em);
+  width: calc(100% - 5.5em);
+  text-align: left; }
+
+.index_evaluate_list .fn-right p {
+  width: 100%;
+  text-align: right;
+  margin-top: 2em;
+  color: #03A9F4; }
+
+.index_school_list {
+  box-shadow: none !important; }
+
+.index_school_list li {
+  background: none !important;
+  border: none !important; }
+
+.index_school_list li:nth-child(1) {
+  border-bottom: #ccc solid 1px !important;
+  margin-bottom: 0.5em !important;
+  padding-bottom: 0.5em; }
+
+.index_school_list li .fn-left {
+  max-width: 50%; }
+
+.index_school_list li .fn-left img {
+  max-width: 100%; }
+
+.index_school_list li .fn-right {
+  max-width: 50%;
+  text-align: right; }
+
+.index_school_list li .fn-right p {
+  margin-top: 1em; }
+
+.index_login li a {
+  padding: 1.5em 0; }
+
+.footer a {
+  padding: 1em 0;
+  height: 4em;
+  line-height: 4.5em; }
+
+.tutors li, .tutors ul {
+  list-style: none !important; }
+
+.tutor_list li {
+  width: 98%;
+  padding: 1% !important;
+  padding-top: 4% !important;
+  line-height: 0.8em;
+  font-size: 0.8em; }
+  .tutor_list li p {
+    overflow: visible !important; }
+  .tutor_list li .tutor_list_l {
+    width: 20%; }
+    .tutor_list li .tutor_list_l > img {
+      width: 100%; }
+    .tutor_list li .tutor_list_l > p > img {
+      width: 20%; }
+    .tutor_list li .tutor_list_l > p {
+      margin: 0 !important;
+      text-align: center; }
+  .tutor_list li .tutor_list_m {
+    padding: 0 1%;
+    width: 31%;
+    height: auto;
+    overflow-x: hidden;
+    text-align: left; }
+    .tutor_list li .tutor_list_m .slogan {
+      color: #008dcd; }
+  .tutor_list li .tutor_list_r {
+    width: 33%;
+    text-align: right; }
+    .tutor_list li .tutor_list_r p {
+      margin: 0.2em 0 !important;
+      padding: 0 !important; }
+    .tutor_list li .tutor_list_r > img {
+      width: 6em; }
+  .tutor_list li .tutor_list_button {
+    padding-top: 1em;
+    width: 10%;
+    text-align: center; }
+    .tutor_list li .tutor_list_button a {
+      display: inline-block; }
+
+.tutors_filter {
+  width: 100%; }
+  .tutors_filter .ui-controlgroup-controls {
+    width: 100%; }
+  .tutors_filter .ui-select {
+    width: 33.3%; }
+
+.star_rank {
+  display: inline-block;
+  width: 4em;
+  height: 0.8em;
+  position: relative; }
+  .star_rank img {
+    display: block;
+    width: 4em;
+    height: 0.8em; }
+  .star_rank > img {
+    position: absolute;
+    z-index: 1;
+    top: 0; }
+  .star_rank > span {
+    display: block;
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    overflow-x: hidden; }
+
+.order_img {
+  height: 3em; }
+  .order_img a {
+    font-size: 1em; }
+  .order_img * {
+    font-size: 1em; }
+  .order_img img {
+    width: 4em;
+    height: 4em; }
+  .order_img h6 {
+    margin: 0;
+    text-indent: 0.5em; }
+  .order_img p {
+    padding: 0;
+    text-indent: 0.5em;
+    color: #29B6F6; }
+
+.order_detail_tips {
+  color: red; }
+
+.order_detail ul li .ui-field-contain div {
+  position: relative;
+  margin: 0.5em 2% 0 0; }
+  .order_detail ul li .ui-field-contain div img {
+    width: 3em;
+    height: 3em;
+    border-radius: 3em !important; }
+  .order_detail ul li .ui-field-contain div span {
+    position: relative;
+    top: -1em; }
+
+.mapSearchList {
+  display: none;
+  float: right;
+  margin: 1em 0;
+  background: #EDEDED;
+  font-size: 0.8em; }
+  .mapSearchList dl {
+    width: 100%;
+    border-bottom: #D2D2D2 dashed 1px; }
+    .mapSearchList dl dd {
+      color: #919191;
+      margin: 0; }
+  .mapSearchList dl.active {
+    color: #005599; }
+    .mapSearchList dl.active dd {
+      color: #005599; }
+
+@media (max-width: 27.9em) {
+  .addressPlaceholder, .mapSearchList {
+    width: 100%;
+    float: right;
+    margin: 1em 0;
+    font-size: 0.8em; } }
+
+@media (min-width: 28em) {
+  .addressPlaceholder, .mapSearchList {
+    width: 78%;
+    float: right;
+    margin: 1em 0;
+    font-size: 0.8em; } }

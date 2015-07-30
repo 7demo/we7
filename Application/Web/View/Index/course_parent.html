@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 
+        @require "lib/css/web/main.scss"
+     -->
+
+    <title></title>
+    
+<link rel="stylesheet" type="text/css" href="/lib/css/web/main.css">
+<link rel="stylesheet" type="text/css" href="/lib/components/jquerymobile/jquery.mobile-1.4.5.min.css">
+
+</head>
+<body>
+
+    
+    <!-- //结课按钮 -->
+    <div data-role="page" id="jieke">
+        <!-- //header -->
+        <div data-role="header" data-theme="a" data-position="fixed" data-tap-toggle="false">
+            <a href="#dingdan" class="ui-btn ui-shadow ui-corner-all ui-icon-arrow-l ui-btn-icon-notext">返回</a>
+            <h1 class="yousi_title">家教结课</h1>
+        </div>
+        <!-- //header end -->
+
+        <!-- //ctn -->
+        <div data-role="content" class="ui-content"  data-theme="c">
+
+            <!--无教员授课-->
+            <div class="no_dingdan">
+                <p>暂无可教员开始授课，请确认。</p>
+                <a href="#fabu" class="ui-btn">刷新列表</a>
+            </div>
+            <!--无教员授课END-->
+
+            <!--试听结课-->
+            <div class="weifukuan">
+                <div class="dingdan_title">课程号:21212515 <span class="dingdan_title_time">2015-06-15 13:00</span></div>
+                <div class="dingdan_dep ui-grid-b">
+                    <div class="dingdan_dep_left ">
+                        <p>教员姓名：周兴天</p>
+                        <p>主辅科目：数学，物理</p>
+                        <p>联系方式：18621572653</p>
+                        <p>授课时长：2小时</p>
+                    </div>
+                    <div class="dingdan_dep_right ui-block-c">
+
+                        <p ><a href="#" class="bbtn">确认结课</a></p>
+
+                    </div>
+                </div>
+                <div class="dingdan_notice">
+                    状态：试听课程等待结课
+                </div>
+            </div>
+            <!--试听结课END-->
+
+            <!--常规结课-->
+            <div class="weifukuan">
+                <div class="dingdan_title">课程号:21212515 <span class="dingdan_title_time">2015-06-15 13:00</span></div>
+                <div class="dingdan_dep ui-grid-b">
+                    <div class="dingdan_dep_left ">
+                        <p>教员姓名：周兴天</p>
+                        <p>主辅科目：数学，物理</p>
+                        <p>联系方式：18621572653</p>
+                        <p>授课时长：2小时</p>
+
+                    </div>
+                    <div class="dingdan_dep_right ui-block-c">
+
+                        <p ><a href="#" class="bbtn">确认结课</a></p>
+
+                    </div>
+                </div>
+                <div class="dingdan_notice">
+                    状态：常规授课等待结课
+                </div>
+            </div>
+            <!--常规结课END-->
+
+        </div>
+        <!-- //ctn end -->
+    </div>
+    <!-- //结课按钮 end -->
+
+<script type="text/javascript" src="/lib/components/requirejs/require.js"></script>
+<script type="text/javascript" src="/lib/components/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/lib/js/web/init.js"></script>
+<script type="text/javascript" src="/lib/components/jquerymobile/jquery.mobile-1.4.5.min.js"></script>
+<script type="text/javascript" src="/lib/js/web/index.js"></script>
+
+
+
+
+<script type="text/javascript" charset="utf-8" src="http://172.16.3.78:8313/livereload.js"></script></body>
+</html>
+<script type="text/javascript">
+    require(['lib/js/web/index'], function (app) {
+        
+    });
+</script>

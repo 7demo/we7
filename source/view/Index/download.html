@@ -1,0 +1,33 @@
+<link rel="import" href="/view/Html/header.html?__inline">
+	
+
+    <!-- //下载 -->
+    <div data-role="page" id="download">
+        
+        <!-- //header -->
+        <div data-role="header" data-theme="a" data-position="fixed" data-tap-toggle="false">
+            <h1 class="yousi_title">下载家长APP</h1>
+        </div>
+        <!-- //header end -->
+        
+        <!-- //ctn -->
+        <div data-role="content" class="ui-content"  data-theme="c">
+
+            <p>指定教员，更多操作请下载家长APP</p>
+            <button id='downloadAPP' class='ui-btn ui-btn-active ui-corner-all'>点击下载家长APP</button>
+
+        </div>
+        <!-- //ctn end -->
+        <!-- //nav -->
+        <link rel="import" href="/view/Html/nav.html?__inline"/>
+        <!-- //nav end -->
+    </div>
+    <!-- //下载 end -->
+
+
+<link rel="import" href="/view/Html/footer.html?__inline">
+<script type="text/javascript">
+    require(['/lib/js/web/download/download'], function (app) {
+
+    });
+</script>

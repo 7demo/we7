@@ -1,0 +1,122 @@
+{template 'common/header-gw'}
+<ol class="breadcrumb">
+	<li><a href="./?refresh"><i class="fa fa-home"></i></a></li>
+	<li><a href="{url 'system/welcome'}">系统</a></li>
+	<li><a href="{url 'system/common'}">其他设置</a></li>
+	<li class="active">全局设置</li>
+</ol>
+	<div class="clearfix">
+		<form action="" method="post" class="form-horizontal form" onsubmit="return formcheck(this)" id="form">
+			<h5 class="page-header">全局设置</h5>
+			<div class="form-group">
+				<label class="col-xs-12 col-sm-2 col-md-2 col-lg-2 control-label">授权地址安全模式</label>
+				<div class="col-sm-10 col-xs-12">
+					<label for="radio_1" class="radio-inline"><input type="radio" name="authmode" id="radio_1" value="1" {if empty($_W['setting']['authmode']) || $_W['setting']['authmode'] == 1} checked{/if} /> 宽松</label>
+					<label for="radio_0" class="radio-inline"><input type="radio" name="authmode" id="radio_0" value="2" {if !empty($_W['setting']['authmode']) && $_W['setting']['authmode'] == 2} checked{/if} /> 严格</label>
+					<div class="help-block">设置严格模式时，系统提供给用户的授权地址时效为3分钟，在这个时间内用户没有点击则失效。并且在严格模式下，授权地址为一次性地址，用户点击后该地址自动失效。但不会影响已授权过的用户。</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-md-offset-2 col-lg-offset-2 col-xs-12 col-sm-10 col-md-10 col-lg-10">
+					<input name="authmodesubmit" type="submit" value="提交" class="btn btn-primary span3" />
+					<input type="hidden" name="token" value="{$_W['token']}" />
+				</div>
+			</div>
+			<!--邮件暂时屏蔽
+			<h5 class="page-header">邮件设置</h5>
+			<div class="form-group">
+				<label class="col-xs-12 col-sm-2 col-md-2 col-lg-2 control-label">SMTP服务器</label>
+				<div class="col-sm-10 col-xs-12">
+					<label for="radio_5" class="radio-inline"><input type="radio" name="smtp[type]" id="radio_5" value="163" {if $_W['setting']['mail']['smtp']['type'] == 163 || empty($_W['setting']['mail']['smtp']['type'])} checked{/if} onclick="$('#smtp').hide();"/> 163服务器</label>
+					<label for="radio_4" class="radio-inline"><input type="radio" name="smtp[type]" id="radio_4" value="custom" {if $_W['setting']['mail']['smtp']['type'] == 'custom'} checked{/if} onclick="$('#smtp').show();" /> 自定义</label>
+					<div class="help-block">SMTP服务器为发送邮件的服务器，微擎程序内置了163的邮件服务器的信息，可直接使用。如果有特殊需要请自定义SMTP服务器</div>	
+				</div>
+			</div>
+			<div id="smtp" {if $_W['setting']['mail']['smtp']['type'] == 'custom'}style="display:block;"{else}style="display:none;" {/if}>
+				<div class="form-group">
+					<label class="col-xs-12 col-sm-2 col-md-2 col-lg-2 control-label">SMTP服务器地址</label>
+					<div class="col-sm-10 col-xs-12">
+						<input type="text" name="smtp[server]" class="form-control" value="{$_W['setting']['mail']['smtp']['server']}" />
+						<div class="help-block">指定SMTP服务器的地址</div>	
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-12 col-sm-2 col-md-2 col-lg-2 control-label">SMTP服务器端口</label>
+					<div class="col-sm-10 col-xs-12">
+						<input type="text" name="smtp[port]" class="form-control" value="{$_W['setting']['mail']['smtp']['port']}" />
+						<div class="help-block">指定SMTP服务器的端口</div>	
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-12 col-sm-2 col-md-2 col-lg-2 control-label">使用SSL加密</label>
+					<div class="col-sm-10 col-xs-12">
+						<label for="radio_7" class="radio-inline"><input type="radio" name="smtp[authmode]" id="radio_7" value="1" {if !empty($_W['setting']['mail']['smtp']['authmode'])} checked{/if} /> 是</label>
+						<label for="radio_6" class="radio-inline"><input type="radio" name="smtp[authmode]" id="radio_6" value="0" {if empty($_W['setting']['mail']['smtp']['authmode'])} checked{/if} /> 否</label>
+						<div class="help-block">开启此项后，连接将用SSL的形式，此项需要SMTP服务器支持</div>	
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-xs-12 col-sm-2 col-md-2 col-lg-2 control-label">发送帐号用户名</label>
+				<div class="col-sm-10 col-xs-12">
+					<input type="text" name="username" class="form-control" value="{$_W['setting']['mail']['username']}" />
+					<div class="help-block">指定发送邮件的用户名，例如：123456@qq.com</div>	
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-xs-12 col-sm-2 col-md-2 col-lg-2 control-label">发送帐号密码</label>
+				<div class="col-sm-10 col-xs-12">
+					<input type="password" name="password" class="form-control" value="{$_W['setting']['mail']['password']}" />
+					<div class="help-block">指定发送邮件的密码</div>	
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-xs-12 col-sm-2 col-md-2 col-lg-2 control-label">发件人名称</label>
+				<div class="col-sm-10 col-xs-12">
+					<input type="text" name="sender" class="form-control" value="{$_W['setting']['mail']['sender']}" />
+					<div class="help-block">指定发送邮件发信人名称</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-xs-12 col-sm-2 col-md-2 col-lg-2 control-label">邮件签名</label>
+				<div class="col-sm-10 col-xs-12">
+					<textarea id="signature" style="height:150px;" name="signature" class="form-control" cols="60">{$_W['setting']['mail']['signature']}</textarea>
+					<div class="help-block">指定邮件末尾添加的签名信息</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-xs-12 col-sm-2 col-md-2 col-lg-2 control-label">测试接收人</label>
+				<div class="col-sm-10 col-xs-12">
+					<input type="text" name="receiver" class="form-control" value="" />
+					<div class="help-block"></div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-md-offset-2 col-lg-offset-2 col-xs-12 col-sm-10 col-md-10 col-lg-10">
+					<input name="submit" type="submit" value="提交" class="btn btn-primary span3" />
+					<label for="radio_7" class="checkbox-inline" style=" margin-left:10px;"><input type="checkbox" name="testsend" id="radio_7" value="1" checked /> 保存后发信给测试接收人</label>
+					<input type="hidden" name="token" value="{$_W['token']}" />
+				</div>
+			</div>
+			-->
+			<h5 class="page-header">系统锁操作</h5>
+			<div class="form-group">
+				<label class="col-xs-12 col-sm-2 col-md-2 col-lg-2 control-label">删除升级锁</label>
+				<div class="col-sm-10 col-xs-12">
+					<input name="bae_delete_update" type="submit" value="删除" class="btn btn-primary span3" />
+					<div class="help-block">升级“微擎”系统时，需要先删除升级锁，确保升级正常进行。</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-xs-12 col-sm-2 col-md-2 col-lg-2 control-label">删除安装锁</label>
+				<div class="col-sm-10 col-xs-12">
+					<input name="bae_delete_install" type="submit" value="删除" class="btn btn-primary span3" />
+					<div class="help-block">重新安装“微擎”系统时，需要先删除安装锁。</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<script type="text/javascript">
+	kindeditor($('#signature'));
+	</script>
+{template 'common/footer-gw'}

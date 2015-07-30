@@ -1,0 +1,361 @@
+2015-07-29 16:56:27 trace :
+------------
+Array:
+from : o_isxuBePy9nhzdQNjZ2K1IJyth4 ;
+to : gh_eb7b2e478458 ;
+time : 1438160094 ;
+type : text ;
+event :  ;
+tousername : gh_eb7b2e478458 ;
+fromusername : o_isxuBePy9nhzdQNjZ2K1IJyth4 ;
+createtime : 1438160094 ;
+msgtype : text ;
+content : 。 ;
+msgid : 6176850570349916533 ;
+redirection :  ;
+source :  ;
+
+2015-07-29 16:56:27 params :
+------------
+Array:
+message : Array ;
+module : default ;
+rule : -1 ;
+
+2015-07-29 16:56:27 response :
+------------
+Array:
+params : Array ;
+
+2015-07-29 16:56:31 trace :
+------------
+Array:
+from : o_isxuBePy9nhzdQNjZ2K1IJyth4 ;
+to : gh_eb7b2e478458 ;
+time : 1438160098 ;
+type : text ;
+event :  ;
+tousername : gh_eb7b2e478458 ;
+fromusername : o_isxuBePy9nhzdQNjZ2K1IJyth4 ;
+createtime : 1438160098 ;
+msgtype : text ;
+content : 。。 ;
+msgid : 6176850587529785723 ;
+redirection :  ;
+source :  ;
+
+2015-07-29 16:56:31 params :
+------------
+Array:
+message : Array ;
+module : default ;
+rule : -1 ;
+
+2015-07-29 16:56:31 response :
+------------
+Array:
+params : Array ;
+
+2015-07-29 16:56:49 trace :
+------------
+Array:
+from : o_isxuBePy9nhzdQNjZ2K1IJyth4 ;
+to : gh_eb7b2e478458 ;
+time : 1438160115 ;
+type : qr ;
+event : SCAN ;
+tousername : gh_eb7b2e478458 ;
+fromusername : o_isxuBePy9nhzdQNjZ2K1IJyth4 ;
+createtime : 1438160115 ;
+msgtype : event ;
+eventkey : 100001 ;
+ticket : gQFn8ToAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xLzhFTjlIY3psS2JaUTNRb0pmVzA2AAIEdpO4VQMEgDoJAA== ;
+scene : 100001 ;
+
+2015-07-29 16:56:49 params :
+------------
+Array:
+message : Array ;
+module : default ;
+rule : -1 ;
+
+2015-07-29 16:56:49 response :
+------------
+Array:
+params : Array ;
+
+2015-07-29 17:00:54 trace :
+------------
+Array:
+from : o_isxuBePy9nhzdQNjZ2K1IJyth4 ;
+to : gh_eb7b2e478458 ;
+time : 1438160361 ;
+type : event ;
+event : subscribe ;
+tousername : gh_eb7b2e478458 ;
+fromusername : o_isxuBePy9nhzdQNjZ2K1IJyth4 ;
+createtime : 1438160361 ;
+msgtype : event ;
+eventkey : qrscene_100001 ;
+ticket : gQFn8ToAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xLzhFTjlIY3psS2JaUTNRb0pmVzA2AAIEdpO4VQMEgDoJAA== ;
+scene : 100001 ;
+
+2015-07-29 17:00:54 params :
+------------
+Array:
+message : Array ;
+module : default ;
+rule : -1 ;
+
+2015-07-29 17:00:54 response :
+------------
+Array:
+params : Array ;
+
+2015-07-29 17:09:03 trace :
+------------
+Array:
+from : o_isxuBePy9nhzdQNjZ2K1IJyth4 ;
+to : gh_eb7b2e478458 ;
+time : 1438160850 ;
+type : qr ;
+event : SCAN ;
+tousername : gh_eb7b2e478458 ;
+fromusername : o_isxuBePy9nhzdQNjZ2K1IJyth4 ;
+createtime : 1438160850 ;
+msgtype : event ;
+eventkey : 100001 ;
+ticket : gQFn8ToAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xLzhFTjlIY3psS2JaUTNRb0pmVzA2AAIEdpO4VQMEgDoJAA== ;
+scene : 100001 ;
+
+2015-07-29 17:09:03 params :
+------------
+Array:
+message : Array ;
+module : default ;
+rule : -1 ;
+
+2015-07-29 17:09:03 response :
+------------
+Array:
+params : Array ;
+
+2015-07-29 17:09:15 trace :
+------------
+Array:
+from : o_isxuBePy9nhzdQNjZ2K1IJyth4 ;
+to : gh_eb7b2e478458 ;
+time : 1438160862 ;
+type : event ;
+event : subscribe ;
+tousername : gh_eb7b2e478458 ;
+fromusername : o_isxuBePy9nhzdQNjZ2K1IJyth4 ;
+createtime : 1438160862 ;
+msgtype : event ;
+eventkey : qrscene_100001 ;
+ticket : gQFn8ToAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xLzhFTjlIY3psS2JaUTNRb0pmVzA2AAIEdpO4VQMEgDoJAA== ;
+scene : 100001 ;
+
+2015-07-29 17:09:15 params :
+------------
+Array:
+message : Array ;
+module : default ;
+rule : -1 ;
+
+2015-07-29 17:09:15 response :
+------------
+Array:
+params : Array ;
+
+2015-07-29 17:09:19 trace :
+------------
+Array:
+from : o_isxuBePy9nhzdQNjZ2K1IJyth4 ;
+to : gh_eb7b2e478458 ;
+time : 1438160866 ;
+type : text ;
+event :  ;
+tousername : gh_eb7b2e478458 ;
+fromusername : o_isxuBePy9nhzdQNjZ2K1IJyth4 ;
+createtime : 1438160866 ;
+msgtype : text ;
+content : 。。。 ;
+msgid : 6176853886064669742 ;
+redirection :  ;
+source :  ;
+
+2015-07-29 17:09:19 params :
+------------
+Array:
+message : Array ;
+module : default ;
+rule : -1 ;
+
+2015-07-29 17:09:19 response :
+------------
+Array:
+params : Array ;
+
+2015-07-29 19:52:54 trace :
+------------
+Array:
+from : o_isxuBePy9nhzdQNjZ2K1IJyth4 ;
+to : gh_eb7b2e478458 ;
+time : 1438170682 ;
+type : text ;
+event :  ;
+tousername : gh_eb7b2e478458 ;
+fromusername : o_isxuBePy9nhzdQNjZ2K1IJyth4 ;
+createtime : 1438170682 ;
+msgtype : text ;
+content : 00 ;
+msgid : 6176896045463652744 ;
+redirection :  ;
+source :  ;
+
+2015-07-29 19:52:54 params :
+------------
+Array:
+message : Array ;
+module : basic ;
+rule : 9 ;
+priority : 0 ;
+keyword : Array ;
+
+2015-07-29 19:52:54 response :
+------------
+Array:
+FromUserName : gh_eb7b2e478458 ;
+ToUserName : o_isxuBePy9nhzdQNjZ2K1IJyth4 ;
+MsgType : text ;
+Content : 暂不支持微信预约，功能开发中，请用电脑登录平台网站完成预约操作：http://sjtu.yousi.com ;
+
+2015-07-29 20:07:53 trace :
+------------
+Array:
+from : o_isxuBePy9nhzdQNjZ2K1IJyth4 ;
+to : gh_eb7b2e478458 ;
+time : 1438171580 ;
+type : event ;
+event : subscribe ;
+tousername : gh_eb7b2e478458 ;
+fromusername : o_isxuBePy9nhzdQNjZ2K1IJyth4 ;
+createtime : 1438171580 ;
+msgtype : event ;
+eventkey :  ;
+
+2015-07-29 20:07:53 params :
+------------
+Array:
+message : Array ;
+module : basic ;
+rule : 9 ;
+priority : 0 ;
+keyword : Array ;
+
+2015-07-29 20:07:53 response :
+------------
+Array:
+FromUserName : gh_eb7b2e478458 ;
+ToUserName : o_isxuBePy9nhzdQNjZ2K1IJyth4 ;
+MsgType : text ;
+Content : 暂不支持微信预约，功能开发中，请用电脑登录平台网站完成预约操作：http://sjtu.yousi.com ;
+
+2015-07-29 20:08:52 trace :
+------------
+Array:
+from : o_isxuBePy9nhzdQNjZ2K1IJyth4 ;
+to : gh_eb7b2e478458 ;
+time : 1438171639 ;
+type : event ;
+event : subscribe ;
+tousername : gh_eb7b2e478458 ;
+fromusername : o_isxuBePy9nhzdQNjZ2K1IJyth4 ;
+createtime : 1438171639 ;
+msgtype : event ;
+eventkey : qrscene_100001 ;
+ticket : gQFn8ToAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xLzhFTjlIY3psS2JaUTNRb0pmVzA2AAIEdpO4VQMEgDoJAA== ;
+scene : 100001 ;
+
+2015-07-29 20:08:52 params :
+------------
+Array:
+message : Array ;
+module : basic ;
+rule : 9 ;
+priority : 0 ;
+keyword : Array ;
+
+2015-07-29 20:08:52 response :
+------------
+Array:
+FromUserName : gh_eb7b2e478458 ;
+ToUserName : o_isxuBePy9nhzdQNjZ2K1IJyth4 ;
+MsgType : text ;
+Content : 暂不支持微信预约，功能开发中，请用电脑登录平台网站完成预约操作：http://sjtu.yousi.com ;
+
+2015-07-29 20:09:52 trace :
+------------
+Array:
+from : o_isxuBePy9nhzdQNjZ2K1IJyth4 ;
+to : gh_eb7b2e478458 ;
+time : 1438171700 ;
+type : event ;
+event : subscribe ;
+tousername : gh_eb7b2e478458 ;
+fromusername : o_isxuBePy9nhzdQNjZ2K1IJyth4 ;
+createtime : 1438171700 ;
+msgtype : event ;
+eventkey : qrscene_1 ;
+ticket : gQF68ToAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xL2lrTUsySFhsV3JZajJYTElDbTg2AAIEsL/dVAMEAAAAAA== ;
+scene : 1 ;
+
+2015-07-29 20:09:52 params :
+------------
+Array:
+message : Array ;
+module : basic ;
+rule : 9 ;
+priority : 0 ;
+keyword : Array ;
+
+2015-07-29 20:09:52 response :
+------------
+Array:
+FromUserName : gh_eb7b2e478458 ;
+ToUserName : o_isxuBePy9nhzdQNjZ2K1IJyth4 ;
+MsgType : text ;
+Content : 暂不支持微信预约，功能开发中，请用电脑登录平台网站完成预约操作：http://sjtu.yousi.com ;
+
+2015-07-29 20:10:37 trace :
+------------
+Array:
+from : o_isxuBePy9nhzdQNjZ2K1IJyth4 ;
+to : gh_eb7b2e478458 ;
+time : 1438171744 ;
+type : event ;
+event : subscribe ;
+tousername : gh_eb7b2e478458 ;
+fromusername : o_isxuBePy9nhzdQNjZ2K1IJyth4 ;
+createtime : 1438171744 ;
+msgtype : event ;
+eventkey :  ;
+
+2015-07-29 20:10:37 params :
+------------
+Array:
+message : Array ;
+module : basic ;
+rule : 9 ;
+priority : 0 ;
+keyword : Array ;
+
+2015-07-29 20:10:37 response :
+------------
+Array:
+FromUserName : gh_eb7b2e478458 ;
+ToUserName : o_isxuBePy9nhzdQNjZ2K1IJyth4 ;
+MsgType : text ;
+Content : 暂不支持微信预约，功能开发中，请用电脑登录平台网站完成预约操作：http://sjtu.yousi.com ;
+

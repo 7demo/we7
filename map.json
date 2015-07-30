@@ -1,0 +1,185 @@
+{
+    "res": {
+        "lib/components/jquery/jquery.js": {
+            "uri": "/lib/components/jquery/jquery.js",
+            "type": "js",
+            "extras": {
+                "moduleId": "jquery"
+            }
+        },
+        "lib/components/jquery/jquery.min.js": {
+            "uri": "/lib/components/jquery/jquery.min.js",
+            "type": "js",
+            "extras": {
+                "moduleId": "jquery"
+            },
+            "id": "lib/components/jquery/jquery.min.js"
+        },
+        "lib/components/jquerymobile/jquery.mobile-1.4.5.css": {
+            "uri": "/lib/components/jquerymobile/jquery.mobile-1.4.5.css",
+            "type": "css"
+        },
+        "lib/components/jquerymobile/jquery.mobile-1.4.5.min.css": {
+            "uri": "/lib/components/jquerymobile/jquery.mobile-1.4.5.min.css",
+            "type": "css",
+            "id": "lib/components/jquerymobile/jquery.mobile-1.4.5.min.css"
+        },
+        "lib/components/jquerymobile/jquery.mobile-1.4.5.min.js": {
+            "uri": "/lib/components/jquerymobile/jquery.mobile-1.4.5.min.js",
+            "type": "js",
+            "extras": {
+                "paths": {
+                    "jquery": "lib/components/jquery/jquery.min.js"
+                },
+                "moduleId": "lib/components/jquerymobile/jquery.mobile-1.4.5.min"
+            },
+            "deps": [
+                "lib/components/jquery/jquery.min.js",
+                "lib/components/jquerymobile/jquery.mobile-1.4.5.min.css"
+            ],
+            "id": "lib/components/jquerymobile/jquery.mobile-1.4.5.min.js"
+        },
+        "lib/components/requirejs/require.js": {
+            "uri": "/lib/components/requirejs/require.js",
+            "type": "js"
+        },
+        "lib/css/web/bootstrap.min.scss": {
+            "uri": "/lib/css/web/bootstrap.min.css",
+            "type": "css"
+        },
+        "lib/css/web/main.scss": {
+            "uri": "/lib/css/web/main.css",
+            "type": "css",
+            "id": "lib/css/web/main.scss"
+        },
+        "lib/js/web/account/account.js": {
+            "uri": "/lib/js/web/account/account.js",
+            "type": "js",
+            "extras": {
+                "paths": {
+                    "jquery": "lib/components/jquery/jquery.min.js",
+                    "lib/js/web/common/ys_core": "lib/js/web/common/ys_core.js",
+                    "lib/js/web/common/countDown": "lib/js/web/common/countDown.js",
+                    "lib/js/web/common/ajax": "lib/js/web/common/ajax.js",
+                    "lib/js/web/init": "lib/js/web/init.js",
+                    "lib/components/jquerymobile/jquery.mobile-1.4.5.min": "lib/components/jquerymobile/jquery.mobile-1.4.5.min.js"
+                },
+                "moduleId": "lib/js/web/account/account"
+            },
+            "deps": [
+                "lib/components/jquery/jquery.min.js",
+                "lib/js/web/common/ys_core.js",
+                "lib/js/web/common/countDown.js",
+                "lib/js/web/common/ajax.js",
+                "lib/js/web/init.js",
+                "lib/components/jquerymobile/jquery.mobile-1.4.5.min.js"
+            ],
+            "id": "lib/js/web/account/account.js"
+        },
+        "lib/js/web/common/ajax.js": {
+            "uri": "/lib/js/web/common/ajax.js",
+            "type": "js",
+            "extras": {
+                "paths": {
+                    "jquery": "lib/components/jquery/jquery.min.js"
+                },
+                "moduleId": "lib/js/web/common/ajax"
+            },
+            "deps": [
+                "lib/components/jquery/jquery.min.js"
+            ],
+            "id": "lib/js/web/common/ajax.js"
+        },
+        "lib/js/web/common/countDown.js": {
+            "uri": "/lib/js/web/common/countDown.js",
+            "type": "js",
+            "extras": {
+                "moduleId": "lib/js/web/common/countDown"
+            },
+            "id": "lib/js/web/common/countDown.js"
+        },
+        "lib/js/web/common/ys_core.js": {
+            "uri": "/lib/js/web/common/ys_core.js",
+            "type": "js",
+            "extras": {
+                "moduleId": "lib/js/web/common/ys_core"
+            },
+            "id": "lib/js/web/common/ys_core.js"
+        },
+        "lib/js/web/download/download.js": {
+            "uri": "/lib/js/web/download/download.js",
+            "type": "js",
+            "extras": {
+                "paths": {
+                    "jquery": "lib/components/jquery/jquery.min.js",
+                    "lib/js/web/init": "lib/js/web/init.js",
+                    "lib/components/jquerymobile/jquery.mobile-1.4.5.min": "lib/components/jquerymobile/jquery.mobile-1.4.5.min.js"
+                },
+                "moduleId": "lib/js/web/download/download"
+            },
+            "deps": [
+                "lib/components/jquery/jquery.min.js",
+                "lib/js/web/init.js",
+                "lib/components/jquerymobile/jquery.mobile-1.4.5.min.js"
+            ],
+            "id": "lib/js/web/download/download.js"
+        },
+        "lib/js/web/index.js": {
+            "uri": "/lib/js/web/index.js",
+            "type": "js",
+            "extras": {
+                "paths": {
+                    "jquery": "lib/components/jquery/jquery.min.js",
+                    "lib/js/web/init": "lib/js/web/init.js",
+                    "lib/components/jquerymobile/jquery.mobile-1.4.5.min": "lib/components/jquerymobile/jquery.mobile-1.4.5.min.js"
+                },
+                "moduleId": "lib/js/web/index"
+            },
+            "deps": [
+                "lib/components/jquery/jquery.min.js",
+                "lib/js/web/init.js",
+                "lib/components/jquerymobile/jquery.mobile-1.4.5.min.js"
+            ],
+            "id": "lib/js/web/index.js"
+        },
+        "lib/js/web/init.js": {
+            "uri": "/lib/js/web/init.js",
+            "type": "js",
+            "extras": {
+                "paths": {
+                    "jquery": "lib/components/jquery/jquery.min.js"
+                },
+                "moduleId": "lib/js/web/init"
+            },
+            "deps": [
+                "lib/components/jquery/jquery.min.js"
+            ],
+            "id": "lib/js/web/init.js"
+        },
+        "lib/js/web/map.js": {
+            "uri": "/lib/js/web/map.js",
+            "type": "js"
+        },
+        "lib/js/web/release.js": {
+            "uri": "/lib/js/web/release.js",
+            "type": "js",
+            "extras": {
+                "paths": {
+                    "jquery": "lib/components/jquery/jquery.min.js",
+                    "lib/js/web/common/ajax": "lib/js/web/common/ajax.js",
+                    "lib/js/web/init": "lib/js/web/init.js",
+                    "lib/components/jquerymobile/jquery.mobile-1.4.5.min": "lib/components/jquerymobile/jquery.mobile-1.4.5.min.js"
+                },
+                "moduleId": "lib/js/web/release"
+            },
+            "deps": [
+                "lib/components/jquery/jquery.min.js",
+                "lib/js/web/common/ajax.js",
+                "lib/js/web/init.js",
+                "lib/components/jquerymobile/jquery.mobile-1.4.5.min.js"
+            ],
+            "id": "lib/js/web/release.js"
+        }
+    },
+    "pkg": {}
+}

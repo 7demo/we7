@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 
+        @require "lib/css/web/main.scss"
+     -->
+
+    <title></title>
+    
+<link rel="stylesheet" type="text/css" href="/lib/css/web/main.css">
+<link rel="stylesheet" type="text/css" href="/lib/components/jquerymobile/jquery.mobile-1.4.5.min.css">
+
+</head>
+<body>
+
+
+    <!-- //家长注册账号 -->
+    <div data-role="page" id="parent_register" class='account'>
+        <!-- //header -->
+        <div data-role="header" data-position="fixed" data-tap-toggle="false">
+            <h1 id='cor' class="yousi_title">家长注册账号</h1>
+        </div>
+        <!-- //header end -->
+
+        <!-- //ctn -->
+        <div data-role="content" class="ui-content" >
+            <ul data-role="listview" data-inset="true" class="list" data-theme="c">
+
+                <li class="list_li">
+                    <div class="ui-field-contain">
+                        <input type="text" name="textinput-fc" placeholder="请输入手机号码" required='required'  value="">
+                    </div>
+                </li>
+                <li class="list_li">
+                    <div class="ui-field-contain">
+                        <div class="ui-grid-a getverify">
+                            <div class="ui-block-a">
+                                <input type="text" name="textinput-fc" data-inline='true' id="verify" placeholder="请输入家长姓名" value="">
+                            </div>
+                            <div class="ui-block-b">
+                                <button class='ui-btn ui-btn-active ui-corner-all' data-inline='true'>获取验证码</button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list_li">
+                    <div class="ui-field-contain">
+                        <input type="text" name="textinput-fc" placeholder="请输入密码" required='required'  value="">
+                    </div>
+                </li>
+                <button class='ui-btn ui-btn-active ui-corner-all' data-inline='true'>注册</button>
+            </ul>
+            <a href="./login.html#parent_login" data-ajax='false'>已有账号，去登录</a>
+        </div>
+        <!-- //ctn -->
+
+    </div>
+    <!-- //家长注册账号 end -->
+
+    <!-- //家教注册账号 -->
+    <div data-role="page" id="tutor_register" class='account'>
+        <!-- //header -->
+        <div data-role="header" data-position="fixed" data-tap-toggle="false">
+            <h1 id='cor' class="yousi_title">家教注册账号</h1>
+        </div>
+        <!-- //header end -->
+
+        <!-- //ctn -->
+        <div data-role="content" class="ui-content" >
+            <ul data-role="listview" data-inset="true" class="list" data-theme="c">
+
+                <li class="list_li">
+                    <div class="ui-field-contain">
+                        <input type="text" name="textinput-fc" placeholder="请输入手机号码" required='required'  value="">
+                    </div>
+                </li>
+                <li class="list_li">
+                    <div class="ui-field-contain">
+                        <div class="ui-grid-a getverify">
+                            <div class="ui-block-a">
+                                <input type="text" name="textinput-fc" data-inline='true' id="verify" placeholder="请输入家长姓名" value="">
+                            </div>
+                            <div class="ui-block-b">
+                                <button class='ui-btn ui-btn-active ui-corner-all' data-inline='true'>获取验证码</button>
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+                </li>
+                <li class="list_li">
+                    <div class="ui-field-contain">
+                        <input type="text" name="textinput-fc" placeholder="请输入密码" required='required'  value="">
+                    </div>
+                </li>
+                <button class='ui-btn ui-btn-active ui-corner-all' data-inline='true'>注册</button>
+            </ul>
+            <a href="./login.html#tutor_login" data-ajax='false'>已有账号，去登录</a>
+
+        </div>
+        <!-- //ctn -->
+
+    </div>
+    <!-- //家教注册账号 end -->
+
+
+
+
+
+
+
+<script type="text/javascript" src="/lib/components/requirejs/require.js"></script>
+<script type="text/javascript" src="/lib/components/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/lib/js/web/init.js"></script>
+<script type="text/javascript" src="/lib/components/jquerymobile/jquery.mobile-1.4.5.min.js"></script>
+<script type="text/javascript" src="/lib/js/web/index.js"></script>
+
+
+
+
+<script type="text/javascript" charset="utf-8" src="http://172.16.3.78:8313/livereload.js"></script></body>
+</html>
+<script type="text/javascript">
+    require(['lib/js/web/index'], function (app) {
+        
+    });
+</script>
+
