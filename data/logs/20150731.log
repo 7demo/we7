@@ -1,0 +1,192 @@
+2015-07-31 00:19:52 trace :
+------------
+Array:
+from : o_isxuNRAbZHIbE9qfCcPXazr3vI ;
+to : gh_eb7b2e478458 ;
+time : 1438273101 ;
+type : event ;
+event : subscribe ;
+tousername : gh_eb7b2e478458 ;
+fromusername : o_isxuNRAbZHIbE9qfCcPXazr3vI ;
+createtime : 1438273101 ;
+msgtype : event ;
+eventkey :  ;
+
+2015-07-31 00:19:52 params :
+------------
+Array:
+message : Array ;
+module : basic ;
+rule : 9 ;
+priority : 0 ;
+keyword : Array ;
+
+2015-07-31 00:19:52 response :
+------------
+Array:
+FromUserName : gh_eb7b2e478458 ;
+ToUserName : o_isxuNRAbZHIbE9qfCcPXazr3vI ;
+MsgType : text ;
+Content : 暂不支持微信预约，功能开发中，请用电脑登录平台网站完成预约操作：http://sjtu.yousi.com ;
+
+2015-07-31 11:05:28 trace :
+------------
+Array:
+from : o_isxuBePy9nhzdQNjZ2K1IJyth4 ;
+to : gh_eb7b2e478458 ;
+time : 1438311836 ;
+type : qr ;
+event : SCAN ;
+tousername : gh_eb7b2e478458 ;
+fromusername : o_isxuBePy9nhzdQNjZ2K1IJyth4 ;
+createtime : 1438311836 ;
+msgtype : event ;
+eventkey : 3 ;
+ticket : gQGv8DoAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xL21rTXFMRHZsRnJadmMySlFLbTg2AAIEGK7eVAMEAAAAAA== ;
+scene : 3 ;
+
+2015-07-31 11:05:28 params :
+------------
+Array:
+message : Array ;
+module : basic ;
+rule : 9 ;
+priority : 0 ;
+keyword : Array ;
+
+2015-07-31 11:05:28 response :
+------------
+Array:
+FromUserName : gh_eb7b2e478458 ;
+ToUserName : o_isxuBePy9nhzdQNjZ2K1IJyth4 ;
+MsgType : text ;
+Content : 暂不支持微信预约，功能开发中，请用电脑登录平台网站完成预约操作：http://sjtu.yousi.com ;
+
+2015-07-31 11:05:40 trace :
+------------
+Array:
+from : o_isxuBePy9nhzdQNjZ2K1IJyth4 ;
+to : gh_eb7b2e478458 ;
+time : 1438311849 ;
+type : text ;
+event :  ;
+tousername : gh_eb7b2e478458 ;
+fromusername : o_isxuBePy9nhzdQNjZ2K1IJyth4 ;
+createtime : 1438311849 ;
+msgtype : text ;
+content : 首页 ;
+msgid : 6177502353111955476 ;
+redirection :  ;
+source :  ;
+
+2015-07-31 11:05:40 params :
+------------
+Array:
+message : Array ;
+module : cover ;
+rule : 8 ;
+priority : 0 ;
+keyword : Array ;
+
+2015-07-31 11:05:40 response :
+------------
+Array:
+FromUserName : gh_eb7b2e478458 ;
+ToUserName : o_isxuBePy9nhzdQNjZ2K1IJyth4 ;
+MsgType : news ;
+ArticleCount : 1 ;
+Articles : Array ;
+
+2015-07-31 11:20:07 trace :
+------------
+Array:
+from : o_isxuAJqAZUwBEQ8xZrG9usA_8Q ;
+to : gh_eb7b2e478458 ;
+time : 1438312716 ;
+type : event ;
+event : subscribe ;
+tousername : gh_eb7b2e478458 ;
+fromusername : o_isxuAJqAZUwBEQ8xZrG9usA_8Q ;
+createtime : 1438312716 ;
+msgtype : event ;
+eventkey :  ;
+
+2015-07-31 11:20:07 params :
+------------
+Array:
+message : Array ;
+module : basic ;
+rule : 9 ;
+priority : 0 ;
+keyword : Array ;
+
+2015-07-31 11:20:07 response :
+------------
+Array:
+FromUserName : gh_eb7b2e478458 ;
+ToUserName : o_isxuAJqAZUwBEQ8xZrG9usA_8Q ;
+MsgType : text ;
+Content : 暂不支持微信预约，功能开发中，请用电脑登录平台网站完成预约操作：http://sjtu.yousi.com ;
+
+2015-07-31 14:38:13 trace :
+------------
+Array:
+from : o_isxuHZtBp9Nb_j_DJVxGNRwFIw ;
+to : gh_eb7b2e478458 ;
+time : 1438324601 ;
+type : event ;
+event : subscribe ;
+tousername : gh_eb7b2e478458 ;
+fromusername : o_isxuHZtBp9Nb_j_DJVxGNRwFIw ;
+createtime : 1438324601 ;
+msgtype : event ;
+eventkey :  ;
+
+2015-07-31 14:38:13 params :
+------------
+Array:
+message : Array ;
+module : basic ;
+rule : 9 ;
+priority : 0 ;
+keyword : Array ;
+
+2015-07-31 14:38:13 response :
+------------
+Array:
+FromUserName : gh_eb7b2e478458 ;
+ToUserName : o_isxuHZtBp9Nb_j_DJVxGNRwFIw ;
+MsgType : text ;
+Content : 暂不支持微信预约，功能开发中，请用电脑登录平台网站完成预约操作：http://sjtu.yousi.com ;
+
+2015-07-31 16:16:39 trace :
+------------
+Array:
+from : o_isxuGURWfa1d8Ba-8fmne4dxCA ;
+to : gh_eb7b2e478458 ;
+time : 1438330507 ;
+type : event ;
+event : subscribe ;
+tousername : gh_eb7b2e478458 ;
+fromusername : o_isxuGURWfa1d8Ba-8fmne4dxCA ;
+createtime : 1438330507 ;
+msgtype : event ;
+eventkey :  ;
+
+2015-07-31 16:16:39 params :
+------------
+Array:
+message : Array ;
+module : basic ;
+rule : 9 ;
+priority : 0 ;
+keyword : Array ;
+
+2015-07-31 16:16:39 response :
+------------
+Array:
+FromUserName : gh_eb7b2e478458 ;
+ToUserName : o_isxuGURWfa1d8Ba-8fmne4dxCA ;
+MsgType : text ;
+Content : 暂不支持微信预约，功能开发中，请用电脑登录平台网站完成预约操作：http://sjtu.yousi.com ;
+

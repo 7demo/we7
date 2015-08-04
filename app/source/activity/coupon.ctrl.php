@@ -47,23 +47,16 @@ if($do == 'mine') {
 		$filter['used'] = '2';
 		$type = 2;
 	}
-	$total = pdo_fetchall('SELECT COUNT(*) FROM ' . tablename('activity_coupon_record') . ' AS a LEFT JOIN ' . tablename('activity_coupon') . ' AS b ON a.couponid = b.couponid WHERE b.type = 1 AND a.uid = :uid AND a.status = :status GROUP BY a.couponid', array(':uid' => $_W['member']['uid'], ':status' => $type));
 	$coupon = activity_coupon_owned($_W['member']['uid'], $filter, $pindex, $psize);
-	if(!empty($coupon['data'])) {
-		foreach($coupon['data'] as &$value){
-			$value['cototal'] = pdo_fetchcolumn('SELECT COUNT(*) FROM ' . tablename('activity_coupon_record') . ' WHERE uid = :uid AND couponid = :couponid AND status = :status', array(':uid' => $_W['member']['uid'], ':couponid' => $value['couponid'], ':status' => $type));
-			$value['thumb'] = tomedia($value['thumb']);
-			$value['description'] = htmlspecialchars_decode($value['description']);
-			$data[$value['couponid']] = $value;
-		}
-	}
+	$data = $coupon['data'];
+	$total = $coupon['total'];
 	unset($coupon);
-	$pager = pagination(count($total), $pindex, $psize);
+	$pager = pagination($total , $pindex, $psize);
 }
 if($do == 'use') {
 	$id = intval($_GPC['id']);
-	$data = activity_coupon_owned($_W['member']['uid'], array('couponid' => $id, 'used' => 1 ));
-	$data = $data['data'][0];
+	$data = activity_coupon_owned($_W['member']['uid'], array('couponid' => $id, 'used' => 1));
+	$data = $data['data'][$id];
 
 	if(checksubmit('submit')) {
 		load()->model('user');

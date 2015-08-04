@@ -27,10 +27,9 @@ $string = implode($prepares, '&');
 $string .= $alipay['secret'];
 $sign = md5($string);
 if($sign == $_GET['sign'] && $_GET['is_success'] == 'T' && $_GET['trade_status'] == 'TRADE_FINISHED') {
-	$plid = $_GET['out_trade_no'];
-	$sql = 'SELECT * FROM ' . tablename('core_paylog') . ' WHERE `plid`=:plid';
+	$sql = 'SELECT * FROM ' . tablename('core_paylog') . ' WHERE `uniontid`=:uniontid';
 	$params = array();
-	$params[':plid'] = $plid;
+	$params[':uniontid'] = $_GET['out_trade_no'];
 	$log = pdo_fetch($sql, $params);
 	if(!empty($log)) {
 		if(!$log['status']) {
@@ -68,6 +67,7 @@ if($sign == $_GET['sign'] && $_GET['is_success'] == 'T' && $_GET['trade_status']
 				$ret['type'] = $log['type'];
 				$ret['from'] = 'return';
 				$ret['tid'] = $log['tid'];
+				$ret['uniontid'] = $log['uniontid'];
 				$ret['user'] = $log['openid'];
 				$ret['fee'] = $log['fee'];
 				$ret['is_usecard'] = $log['is_usecard'];

@@ -502,3 +502,26 @@ function ext_template_type() {
 	);
 	return $types;
 }
+
+
+function ext_module_script_clean($modulename, $manifest) {
+	$moduleDir = IA_ROOT . '/addons/' . $modulename . '/';
+	$manifest['install'] = trim($manifest['install']);
+	$manifest['uninstall'] = trim($manifest['uninstall']);
+	$manifest['upgrade'] = trim($manifest['upgrade']);
+	if (strexists($manifest['install'], '.php')) {
+		if (file_exists($moduleDir . $manifest['install'])) {
+			unlink($moduleDir . $manifest['install']);
+		}
+	}
+	if (strexists($manifest['uninstall'], '.php')) {
+		if (file_exists($moduleDir . $manifest['uninstall'])) {
+			unlink($moduleDir . $manifest['uninstall']);
+		}
+	}
+	if (strexists($manifest['upgrade'], '.php')) {
+		if (file_exists($moduleDir . $manifest['upgrade'])) {
+			unlink($moduleDir . $manifest['upgrade']);
+		}
+	}
+}

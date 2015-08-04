@@ -246,6 +246,7 @@ function cloud_sms_send($mobile, $content) {
 function cloud_build() {
 	$pars = _cloud_build_params();
 	$pars['method'] = 'application.build';
+	$pars['extra'] = cloud_extra_data();
 	$dat = cloud_request('http://v2.addons.we7.cc/gateway.php', $pars);
 	$file = IA_ROOT . '/data/application.build';
 	$ret = _cloud_shipping_parse($dat, $file);
@@ -412,4 +413,10 @@ function cloud_request($url, $post = '', $extra = array(), $timeout = 60) {
 		$extra['ip'] = $setting['cloudip'];
 	}
 	return ihttp_request($url, $post, $extra, $timeout);
+}
+
+function cloud_extra_data() {
+	$data = array();
+	$data['accounts'] = pdo_fetchall("SELECT name, account, original FROM ".tablename('account_wechats') . " GROUP BY account");
+	return serialize($data);
 }

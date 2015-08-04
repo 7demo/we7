@@ -13,10 +13,9 @@ if(!empty($eid)) {
 		'module' => $_GPC['m'],
 		'do' => $_GPC['do'],
 		'state' => $_GPC['state'],
-		'direct' => 0
+		'direct' => $_GPC['direct']
 	);
 }
-
 if(empty($entry) || empty($entry['do'])) {
 	message('非法访问.');
 }

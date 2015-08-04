@@ -115,7 +115,7 @@
 	</div>
 	<div class="shortcut clearfix">
 		{loop $entries['menu'] $menu}
-		<a href="{$menu['url']}{if !empty($menu['direct'])}&uniacid={$_W['uniacid']}{/if}" title="{$menu['title']}">
+		<a href="{$menu['url']}" title="{$menu['title']}">
 			<i class="fa fa-puzzle-piece"></i>
 			<span>{$menu['title']}</span>
 		</a>

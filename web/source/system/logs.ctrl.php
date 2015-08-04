@@ -22,21 +22,20 @@ if ($_GPC['time']) {
 if ($do == 'wechat') {
 	$path = IA_ROOT . '/data/logs/';
 	$files = glob($path . '*');
-	$searchtime = date('Ymd', time());
-	foreach ($files as $key=>$file) {
-		$filename = substr($file, strripos($file, '/') + 1, 8);
-		if ($filename == $searchtime) {
-			$contents = file_get_contents($file);
-		}
-	}
 	if (!empty($_GPC['searchtime'])) {
-		$searchtime = $_GPC['searchtime'];
-		$searchtime = str_replace('-', '', substr($searchtime, 0, 10));
-				foreach ($files as $key=>$file) {
-			$filename = substr($file, strripos($file, '/') + 1, 8);
-			if ($filename == $searchtime) {
-				$contents = file_get_contents($file);
-			}
+		$searchtime = $_GPC['searchtime'] . '.log';
+	} else {
+		$searchtime = date('Ymd', time()) . '.log';
+	}
+	$tree = array();
+	foreach ($files as $key=>$file) {
+		if (!preg_match('/\/[0-9]+\.log/', $file)) {
+			continue;
+		}
+		$pathinfo = pathinfo($file);
+		array_unshift($tree, $pathinfo['filename']);
+		if (strexists($file, $searchtime)) {
+			$contents = file_get_contents($file);
 		}
 	}
 }

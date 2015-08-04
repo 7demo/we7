@@ -23,11 +23,9 @@ require 'bfb_sdk.php';
 if (!empty($_GPC['pay_result']) && $_GPC['pay_result'] == '1') {
 	$bfb_sdk = new bfb_sdk();
 	if (true === $bfb_sdk->check_bfb_pay_result_notify()) {
-		$plid = intval($_GPC['order_no']);
-		
-		$sql = 'SELECT * FROM ' . tablename('core_paylog') . ' WHERE `plid`=:plid';
+		$sql = 'SELECT * FROM ' . tablename('core_paylog') . ' WHERE `uniontid`=:uniontid';
 		$params = array();
-		$params[':plid'] = $plid;
+		$params[':uniontid'] = $_GPC['order_no'];
 		$log = pdo_fetch($sql, $params);
 		if(!empty($log) && $log['status'] == '0') {
 			$log['tag'] = iunserializer($log['tag']);
@@ -66,6 +64,7 @@ if (!empty($_GPC['pay_result']) && $_GPC['pay_result'] == '1') {
 				$ret['type'] = $log['type'];
 				$ret['from'] = 'return';
 				$ret['tid'] = $log['tid'];
+				$ret['uniontid'] = $log['uniontid'];
 				$ret['user'] = $log['openid'];
 				$ret['fee'] = $log['fee'];
 				$ret['tag'] = $log['tag'];
@@ -89,12 +88,11 @@ if($auth != $_GPC['auth']) {
 $_W['openid'] = intval($paylog['openid']);
 $bfb_sdk = new bfb_sdk();
 
-file_put_contents(IA_ROOT . '/data/' . microtime(true) . '.txt', print_r($_GET, true));
 $params = array (
 	'service_code' => sp_conf::BFB_PAY_INTERFACE_SERVICE_ID,
 	'sp_no' => sp_conf::$SP_NO,
 	'order_create_time' => date("YmdHis"),
-	'order_no' => $paylog['plid'],
+	'order_no' => $paylog['uniontid'],
 	'goods_name' => iconv('utf-8', 'gbk', $params['title']),
 	'total_amount' => $params['fee'] * 100,
 	'currency' => sp_conf::BFB_INTERFACE_CURRENTCY,

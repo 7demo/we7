@@ -5,7 +5,8 @@
  */
 defined('IN_IA') or exit('Access Denied');
 
-function tpl_form_field_image($name, $value){
+
+function tpl_form_field_image($name, $value = ''){
 	
 	$thumb = empty($value) ? 'images/global/nopic.jpg' : $value;
 	$thumb = tomedia($thumb);

@@ -19,11 +19,9 @@ require 'bfb_sdk.php';
 $bfb_sdk = new bfb_sdk();
 if (!empty($_GPC['pay_result']) && $_GPC['pay_result'] == '1') {
 	if (true === $bfb_sdk->check_bfb_pay_result_notify()) {
-		$plid = intval($_GPC['order_no']);
-		
-		$sql = 'SELECT * FROM ' . tablename('core_paylog') . ' WHERE `plid`=:plid';
+		$sql = 'SELECT * FROM ' . tablename('core_paylog') . ' WHERE `uniontid`=:uniontid';
 		$params = array();
-		$params[':plid'] = $plid;
+		$params[':uniontid'] = $_GPC['order_no'];
 		$log = pdo_fetch($sql, $params);
 		if(!empty($log) && $log['status'] == '0') {
 			$log['tag'] = iunserializer($log['tag']);
@@ -63,6 +61,7 @@ if (!empty($_GPC['pay_result']) && $_GPC['pay_result'] == '1') {
 					$ret['type'] = $log['type'];
 					$ret['from'] = 'return';
 					$ret['tid'] = $log['tid'];
+					$ret['uniontid'] = $log['uniontid'];
 					$ret['user'] = $log['openid'];
 					$ret['fee'] = $log['fee'];
 					$ret['tag'] = $log['tag'];

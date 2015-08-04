@@ -5,9 +5,7 @@
  */
 defined('IN_IA') or exit('Access Denied');
 $dos = array('display', 'post');
-
 $do = in_array($do, $dos) ? $do : 'display';
-
 if($do == 'display') {
 	$_W['page']['title'] = '字段管理 - 会员字段管理 - 会员中心';
 	if (checksubmit('submit')) {
@@ -30,11 +28,30 @@ if($do == 'display') {
 	}
 
 	$sql = 'SELECT `f`.`field`, `f`.`id` AS `fid`, `mf`.* FROM ' . tablename('profile_fields') . " AS `f` LEFT JOIN " .
-			tablename('mc_member_fields') . " AS `mf` ON `f`.`id` = `mf`.`fieldid` WHERE `uniacid` = :uniacid ORDER BY `displayorder` DESC";
+			tablename('mc_member_fields') . " AS `mf` ON `f`.`id` = `mf`.`fieldid` WHERE `uniacid` = :uniacid ORDER BY
+			`displayorder` DESC";
 	$fields = pdo_fetchall($sql, array(':uniacid' => $_W['uniacid']));
-	if (empty($fields)) {
-		$sql = 'SELECT `id` AS `fid`, `field`, `title`, `displayorder` FROM ' . tablename('profile_fields');
-		$fields = pdo_fetchall($sql);
+
+		$sql = 'SELECT * FROM ' . tablename('mc_member_fields') . ' WHERE `uniacid` = :uniacid';
+	$memberFields = pdo_fetchall($sql, array(':uniacid' => $_W['uniacid']), 'fieldid');
+		$sql = 'SELECT * FROM ' . tablename('profile_fields');
+	$sysFields = pdo_fetchall($sql, array(), 'id');
+		$diffFields = array_diff(array_keys($sysFields), array_keys($memberFields));
+		if (!empty($diffFields)) {
+		$update = array('uniacid' => $_W['uniacid']);
+		foreach ($diffFields as $fieldIndex) {
+			$update['fieldid'] = $sysFields[$fieldIndex]['id'];
+			$update['title'] = $sysFields[$fieldIndex]['title'];
+			$update['available'] = $sysFields[$fieldIndex]['available'];
+			$update['displayorder'] = $sysFields[$fieldIndex]['displayorder'];
+
+			pdo_insert('mc_member_fields', $update);
+			$insertId = pdo_insertid();
+			$memberFields[$insertId]['id'] = $insertId;
+			$memberFields[$insertId]['field'] = $sysFields[$fieldIndex]['field'];
+			$memberFields[$insertId]['fid'] = $sysFields[$fieldIndex]['id'];
+			$memberFields[$insertId] = array_merge($memberFields[$insertId], $update);
+		}
 	}
 }
 

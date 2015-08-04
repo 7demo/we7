@@ -30,12 +30,6 @@ if($do == 'display') {
 		if($_GPC['type'] == 'email') {
 			$sql .= " AND `email`!=''";
 		}
-		if($_GPC['type'] == 'sms') {
-			$sql .= " AND `mobile`!=''";
-		}
-		if($_GPC['type'] == 'wechat') {
-			$sql .= ' AND `uid` IN (SELECT `uid` FROM ' . tablename('mc_mapping_fans') . ' WHERE uniacid = ' . $_W['uniacid'] . ')';
-		}
 		$count = pdo_fetchcolumn($sql, $pars);
 	}
 	$groups = pdo_fetchall('SELECT groupid,title FROM ' . tablename('mc_groups') . " WHERE uniacid = '{$_W['uniacid']}' ");
@@ -79,33 +73,6 @@ if($do == 'send') {
 				$str_replace = array($_W['siteroot'] . 'attachment/images');
 				$post['content'] =  str_replace($str_find, $str_replace, $post['content']);
 				$r = ihttp_email($row['email'], $post['title'], $post['content']);
-				if(is_error($r)) {
-					$ret['failed']++;
-				} else {
-					$ret['success']++;
-				}
-			}
-		}
-		if($start + $psize < $ret['total']) {
-			$ret['next'] = $pindex + 1;
-		}
-	}
-	
-	if($post['type'] == 'sms') {
-		$sql .= " AND `mobile`!=''";
-		$countSql = 'SELECT COUNT(*)' . $sql;
-		$ret['total'] = pdo_fetchcolumn($countSql, $pars);
-		$ret['total'] = intval($ret['total']);
-		$psize = 1;
-		$pindex = intval($post['next']);
-		$pindex = max(1, $pindex);
-		$start = $psize * ($pindex - 1);
-		$sql = 'SELECT `mobile`' . $sql . " LIMIT {$start}, {$psize}";
-		$ds = pdo_fetchall($sql, $pars);
-		if(is_array($ds)) {
-			load()->model('cloud');
-			foreach($ds as $row) {
-				cloud_sms_send($row['mobile'], $post['content']);
 				if(is_error($r)) {
 					$ret['failed']++;
 				} else {

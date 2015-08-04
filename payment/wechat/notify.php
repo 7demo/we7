@@ -36,10 +36,9 @@ if(is_array($setting['payment'])) {
 		$wechat['signkey'] = ($wechat['version'] == 1) ? $wechat['key'] : $wechat['signkey'];
 		$sign = strtoupper(md5($string1 . "key={$wechat['signkey']}"));
 		if($sign == $get['sign']) {
-			$plid = $get['out_trade_no'];
-			$sql = 'SELECT * FROM ' . tablename('core_paylog') . ' WHERE `plid`=:plid';
+			$sql = 'SELECT * FROM ' . tablename('core_paylog') . ' WHERE `uniontid`=:uniontid';
 			$params = array();
-			$params[':plid'] = $plid;
+			$params[':uniontid'] = $get['out_trade_no'];
 			$log = pdo_fetch($sql, $params);
 			if(!empty($log) && $log['status'] == '0') {
 				$log['tag'] = iunserializer($log['tag']);
@@ -61,6 +60,7 @@ if(is_array($setting['payment'])) {
 						$ret['type'] = $log['type'];
 						$ret['from'] = 'notify';
 						$ret['tid'] = $log['tid'];
+						$ret['uniontid'] = $log['uniontid'];
 						$ret['user'] = $log['openid'];
 						$ret['fee'] = $log['fee'];
 						$ret['tag'] = $log['tag'];

@@ -79,19 +79,7 @@ class DB {
 			$this->debug(false, $info);
 		}
 		$endtime = microtime();
-		global $_W;
-				if (empty($_W['config']['setting']['maxtimesql'])) {
-			$_W['config']['setting']['maxtimesql'] = 5;
-		}
-		if ($endtime - $starttime > $_W['config']['setting']['maxtimesql']) {
-			$sqldata = array(
-					'type' => '2',
-					'runtime' => $endtime - $starttime,
-					'runurl' => 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'],
-					'runsql' => $sql,
-					'createtime' => time()
-			);
-		}
+		$this->performance($sql, $endtime - $starttime);
 		if (!$result) {
 			return false;
 		} else {
@@ -112,19 +100,7 @@ class DB {
 			$this->debug(false, $info);
 		}
 		$endtime = microtime();
-		global $_W;
-				if (empty($_W['config']['setting']['maxtimesql'])) {
-			$_W['config']['setting']['maxtimesql'] = 5;
-		}
-		if ($endtime - $starttime > $_W['config']['setting']['maxtimesql']) {
-			$sqldata = array(
-					'type' => '2',
-					'runtime' => $endtime - $starttime,
-					'runurl' => 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'],
-					'runsql' => $sql,
-					'createtime' => time()
-			);
-		}
+		$this->performance($sql, $endtime - $starttime);
 		if (!$result) {
 			return false;
 		} else {
@@ -145,19 +121,7 @@ class DB {
 			$this->debug(false, $info);
 		}
 		$endtime = microtime();
-		global $_W;
-				if (empty($_W['config']['setting']['maxtimesql'])) {
-			$_W['config']['setting']['maxtimesql'] = 5;
-		}
-		if ($endtime - $starttime > $_W['config']['setting']['maxtimesql']) {
-			$sqldata = array(
-					'type' => '2',
-					'runtime' => $endtime - $starttime,
-					'runurl' => 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'],
-					'runsql' => $sql,
-					'createtime' => time()
-			);
-		}
+		$this->performance($sql, $endtime - $starttime);
 		if (!$result) {
 			return false;
 		} else {
@@ -178,19 +142,7 @@ class DB {
 			$this->debug(false, $info);
 		}
 		$endtime = microtime();
-		global $_W;
-				if (empty($_W['config']['setting']['maxtimesql'])) {
-			$_W['config']['setting']['maxtimesql'] = 5;
-		}
-		if ($endtime - $starttime > $_W['config']['setting']['maxtimesql']) {
-			$sqldata = array(
-					'type' => '2',
-					'runtime' => $endtime - $starttime,
-					'runurl' => 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'],
-					'runsql' => $sql,
-					'createtime' => time()
-			);
-		}
+		$this->performance($sql, $endtime - $starttime);
 		if (!$result) {
 			return false;
 		} else {
@@ -380,5 +332,28 @@ class DB {
 			return false;
 		}
 	}
-
+	
+	private function performance($sql, $runtime = 0) {
+		global $_W;
+		if ($runtime == 0) {
+			return false;
+		}
+		if (strexists($sql, 'core_performance')) {
+			return false;
+		}
+				if (empty($_W['config']['setting']['maxtimesql'])) {
+			$_W['config']['setting']['maxtimesql'] = 5;
+		}
+		if ($runtime > $_W['config']['setting']['maxtimesql']) {
+			$sqldata = array(
+				'type' => '2',
+				'runtime' => $runtime,
+				'runurl' => 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'],
+				'runsql' => $sql,
+				'createtime' => time()
+			);
+			$this->insert('core_performance', $sqldata);
+		}
+		return true;
+	}
 }

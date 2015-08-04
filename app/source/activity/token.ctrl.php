@@ -47,24 +47,16 @@ if($do == 'mine') {
 		$filter['used'] = '2';
 		$type = 2;
 	}
-	$total = pdo_fetchall('SELECT COUNT(*) FROM ' . tablename('activity_coupon_record') . ' WHERE uid = :uid AND status = :status GROUP BY couponid', array(':uid' => $_W['member']['uid'], ':status' => $type));
 	$coupon = activity_token_owned($_W['member']['uid'], $filter, $pindex, $psize);
-	if(!empty($coupon['data'])) {
-		foreach($coupon['data'] as &$value){
-			$value['cototal'] = pdo_fetchcolumn('SELECT COUNT(*) FROM ' . tablename('activity_coupon_record') . ' WHERE uid = :uid AND couponid = :couponid AND status = :status', array(':uid' => $_W['member']['uid'], ':couponid' => $value['couponid'], ':status' => $type));
-			$value['thumb'] = tomedia($value['thumb']);
-			$value['description'] = htmlspecialchars_decode($value['description']);
-			$data[$value['couponid']] = $value;
-		}
-	}
+	$data = $coupon['data'];
+	$total = $coupon['total'];
 	unset($coupon);
-	$pager = pagination(count($total), $pindex, $psize);
+	$pager = pagination($total , $pindex, $psize);
 }
 if($do == 'use') {
 	$id = intval($_GPC['id']);
 	$data = activity_token_owned($_W['member']['uid'], array('couponid' => $id, 'used' => 1));
-	$data = $data['data'][0];
-
+	$data = $data['data'][$id];
 	if(checksubmit('submit')) {
 		load()->model('user');
 		$password = $_GPC['password'];

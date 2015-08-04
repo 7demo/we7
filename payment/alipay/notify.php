@@ -21,10 +21,9 @@ if(!empty($_POST)) {
 			$string .= $alipay['secret'];
 			$sign = md5($string);
 			if($sign == $_POST['sign']) {
-				$plid = $out_trade_no;
-				$sql = 'SELECT * FROM ' . tablename('core_paylog') . ' WHERE `plid`=:plid';
+				$sql = 'SELECT * FROM ' . tablename('core_paylog') . ' WHERE `uniontid`=:uniontid';
 				$params = array();
-				$params[':plid'] = $plid;
+				$params[':uniontid'] = $out_trade_no;
 				$log = pdo_fetch($sql, $params);
 				if(!empty($log) && $log['status'] == '0') {
 					$record = array();
@@ -60,6 +59,7 @@ if(!empty($_POST)) {
 							$ret['type'] = $log['type'];
 							$ret['from'] = 'notify';
 							$ret['tid'] = $log['tid'];
+							$ret['uniontid'] = $log['uniontid'];
 							$ret['user'] = $log['openid'];
 							$ret['fee'] = $log['fee'];
 							$ret['is_usecard'] = $log['is_usecard'];

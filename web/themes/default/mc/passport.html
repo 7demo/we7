@@ -13,15 +13,15 @@
 			</div>
 			<div class="panel-body">
 				<div class="form-group">
-					<label class="col-xs-12 col-sm-3 col-md-2 control-label">开启强制注册</label>
+					<label class="col-xs-12 col-sm-3 col-md-2 control-label">会员注册设置</label>
 					<div class="col-sm-9 col-xs-12">
 						<label class="radio-inline">
-							<input type="radio" name="passport[focusreg]" value="1" {if !empty($passport['focusreg'])} checked="checked"{/if}/> 是
+							<input type="radio" name="passport[focusreg]" value="1" {if !empty($passport['focusreg'])} checked="checked"{/if}/> 会员手动注册
 						</label>
 						<label class="radio-inline">
-							<input type="radio" name="passport[focusreg]" value="0" {if empty($passport['focusreg'])} checked="checked"{/if}/> 否
+							<input type="radio" name="passport[focusreg]" value="0" {if empty($passport['focusreg'])} checked="checked"{/if}/> 系统自动注册
 						</label>
-						<span class="help-block">关闭强制注册时，用户从微信、易信等进入系统时，当模块使用"checkauth"验证用户身份时，可以在非登录状态下直接使用模块功能。</span>
+						<span class="help-block">当设置为"系统自动注册"，用户从微信进入系统时，当模块使用"checkauth"验证用户身份时，可以在非登录状态下直接使用模块功能。</span>
 					</div>
 				</div>
 				<div class="form-group">

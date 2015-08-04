@@ -12,14 +12,15 @@ class CoreModuleReceiver extends WeModuleReceiver {
 			$sceneid = $this->message['scene'];
 			$acid = $this->acid;
 			$uniacid = $this->uniacid;
-			$row = pdo_fetch("SELECT id, name, acid FROM ".tablename('qrcode')." WHERE uniacid = :aid AND acid = :acid AND qrcid = :qrcid", array(':aid' => $uniacid, ':acid' => $acid, ':qrcid' => $sceneid));
+			$row = pdo_fetch("SELECT id, name, acid FROM ".tablename('qrcode')." WHERE uniacid = :aid AND acid = :acid AND (qrcid = :qrcid OR scene_str = :scene_str)", array(':aid' => $uniacid, ':acid' => $acid, ':qrcid' => $sceneid, ':scene_str' => $sceneid));
 			$insert = array(
 				'uniacid' => $_W['uniacid'],
 				'acid' => $row['acid'],
 				'qid' => $row['id'],
 				'openid' => $this->message['from'],
 				'type' => 1,
-				'qrcid' => $sceneid,
+				'qrcid' => intval($sceneid),
+				'scene_str' => $sceneid,
 				'name' => $row['name'],
 				'createtime' => TIMESTAMP,
 			);
@@ -35,7 +36,8 @@ class CoreModuleReceiver extends WeModuleReceiver {
 				'qid' => $row['id'],
 				'openid' => $this->message['from'],
 				'type' => 2,
-				'qrcid' => $sceneid,
+				'qrcid' => intval($sceneid),
+				'scene_str' => $sceneid,
 				'name' => $row['name'],
 				'createtime' => TIMESTAMP,
 			);

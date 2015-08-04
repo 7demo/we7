@@ -35,8 +35,7 @@ function activity_coupon_available($uid, $pindex = 1, $psize = 10) {
 }
 
 
-function activity_coupon_owned($uid, $filter = array(), $pindex = 1, $psize = 10) {
-	global $_W;
+function activity_coupon_owned($uid, $filter = array(), $pindex = 10, $psize = 0) {
 	$condition = '';
 	if (!empty($filter['used'])) {
 		$condition .= ' AND r.`status` = ' . $filter['used'];
@@ -50,14 +49,26 @@ function activity_coupon_owned($uid, $filter = array(), $pindex = 1, $psize = 10
 	if (!empty($filter['usemodule'])) {
 		$condition .= " AND r.`usemodule`= '{$filter['usemodule']}' ";
 	}
-	$total = pdo_fetchcolumn("SELECT count(*) FROM " . tablename('activity_coupon_record') . " AS r LEFT JOIN " . tablename('activity_coupon') . " AS c ON r.couponid = c.couponid WHERE c.type = 1 AND r.uid = :uid " . $condition, array(':uid' => $uid));
+	$limit_sql = '';
 	if ($psize > 0) {
-		$data = pdo_fetchall("SELECT r.*,c.couponid,c.title,c.couponsn,c.type,c.description,c.discount,c.starttime,c.endtime,c.thumb FROM " . tablename('activity_coupon_record') . " AS r LEFT JOIN " . tablename('activity_coupon') . " AS c ON r.couponid = c.couponid WHERE c.type = 1 AND r.uid = :uid " . $condition . " ORDER BY r.recid DESC LIMIT " . ($pindex - 1) * $psize . ',' . $psize, array(':uid' => $uid));
-	} else {
-		$data = pdo_fetchall("SELECT r.*,c.couponid,c.title,c.couponsn,c.type,c.description,c.discount,c.starttime,c.endtime,c.thumb FROM " . tablename('activity_coupon_record') . " AS r LEFT JOIN " . tablename('activity_coupon') . " AS c ON r.couponid = c.couponid WHERE c.type = 1 AND r.uid = :uid " . $condition . ' ORDER BY r.recid DESC ', array(':uid' => $uid));
+		$limit_sql = ' LIMIT ' . ($pindex - 1) * $psize . ',' . $psize;
 	}
-	return array('total' => $total, 'data' => $data);
+	$total = pdo_fetchall("SELECT COUNT(*) AS cototal, r.couponid, r.status FROM " . tablename('activity_coupon_record') . " AS r LEFT JOIN " . tablename('activity_coupon') . " AS c ON r.couponid = c.couponid WHERE c.type = 1 AND r.uid = :uid " . $condition . ' GROUP BY r.couponid', array(':uid' => $uid));
+	$data = pdo_fetchall("SELECT COUNT(*) AS cototal, r.couponid, r.status FROM " . tablename('activity_coupon_record') . " AS r LEFT JOIN " . tablename('activity_coupon') . " AS c ON r.couponid = c.couponid WHERE c.type = 1 AND r.uid = :uid " . $condition . ' GROUP BY r.couponid ORDER BY r.couponid DESC' . $limit_sql, array(':uid' => $uid), 'couponid');
+	if(!empty($data)) {
+		$couponids = implode(', ', array_keys($data));
+		$tokens = pdo_fetchall("SELECT couponid,thumb,couponsn,`condition`,title,discount,type,starttime,endtime FROM " . tablename('activity_coupon') . " WHERE couponid IN ({$couponids})", array(), 'couponid');
+		foreach($tokens as &$token) {
+			$token['status'] = $data[$token['couponid']]['status'];
+			$token['cototal'] = $data[$token['couponid']]['cototal'];
+			$token['thumb'] = tomedia($token['thumb']);
+			$token['description'] = htmlspecialchars_decode($token['description']);
+		}
+	}
+	unset($data);
+	return array('total' => count($total), 'data' => $tokens);
 }
+
 
 
 function activity_coupon_info($couponid, $uniacid) {
@@ -204,7 +215,6 @@ function activity_token_available($uid, $pindex = 1, $psize = 0) {
 
 
 function activity_token_owned($uid, $filter = array(), $pindex = 10, $psize = 0) {
-	global $_W;
 	$condition = '';
 	if (!empty($filter['used'])) {
 		$condition .= ' AND r.`status` = ' . $filter['used'];
@@ -218,13 +228,24 @@ function activity_token_owned($uid, $filter = array(), $pindex = 10, $psize = 0)
 	if (!empty($filter['usemodule'])) {
 		$condition .= " AND r.`usemodule`= '{$filter['usemodule']}' ";
 	}
-	$total = pdo_fetchcolumn("SELECT count(*) FROM " . tablename('activity_coupon_record') . " AS r LEFT JOIN " . tablename('activity_coupon') . " AS c ON r.couponid = c.couponid WHERE c.type = 2 AND r.uid = :uid " . $condition, array(':uid' => $uid));
+	$limit_sql = '';
 	if ($psize > 0) {
-		$data = pdo_fetchall("SELECT r.*,c.couponid,c.couponsn,c.condition,c.title,c.discount,c.type,c.starttime,c.endtime FROM " . tablename('activity_coupon_record') . " AS r LEFT JOIN " . tablename('activity_coupon') . " AS c ON r.couponid = c.couponid WHERE c.type = 2 AND r.uid = :uid " . $condition . " ORDER BY r.recid DESC LIMIT " . ($pindex - 1) * $psize . ',' . $psize, array(':uid' => $uid));
-	} else {
-		$data = pdo_fetchall("SELECT r.*,c.couponid,c.couponsn,c.condition,c.title,c.discount,c.type,c.starttime,c.endtime FROM " . tablename('activity_coupon_record') . " AS r LEFT JOIN " . tablename('activity_coupon') . " AS c ON r.couponid = c.couponid WHERE c.type = 2 AND r.uid = :uid " . $condition . ' ORDER BY r.recid DESC ', array(':uid' => $uid));
+		$limit_sql = ' LIMIT ' . ($pindex - 1) * $psize . ',' . $psize;
 	}
-	return array('total' => $total, 'data' => $data);
+	$total = pdo_fetchall("SELECT COUNT(*) AS cototal, r.couponid, r.status FROM " . tablename('activity_coupon_record') . " AS r LEFT JOIN " . tablename('activity_coupon') . " AS c ON r.couponid = c.couponid WHERE c.type = 2 AND r.uid = :uid " . $condition . ' GROUP BY r.couponid', array(':uid' => $uid));
+	$data = pdo_fetchall("SELECT COUNT(*) AS cototal, r.couponid, r.status FROM " . tablename('activity_coupon_record') . " AS r LEFT JOIN " . tablename('activity_coupon') . " AS c ON r.couponid = c.couponid WHERE c.type = 2 AND r.uid = :uid " . $condition . ' GROUP BY r.couponid ORDER BY r.couponid DESC' . $limit_sql, array(':uid' => $uid), 'couponid');
+	if(!empty($data)) {
+		$couponids = implode(', ', array_keys($data));
+		$tokens = pdo_fetchall("SELECT couponid,thumb,couponsn,`condition`,title,discount,type,starttime,endtime FROM " . tablename('activity_coupon') . " WHERE couponid IN ({$couponids})", array(), 'couponid');
+		foreach($tokens as &$token) {
+			$token['status'] = $data[$token['couponid']]['status'];
+			$token['cototal'] = $data[$token['couponid']]['cototal'];
+			$token['thumb'] = tomedia($token['thumb']);
+			$token['description'] = htmlspecialchars_decode($token['description']);
+		}
+	}
+	unset($data);
+	return array('total' => count($total), 'data' => $tokens);
 }
 
 
@@ -232,7 +253,7 @@ function activity_token_info($couponid, $uniacid) {
 	global $_W;
 	$couponid = intval($couponid);
 	$uniacid = intval($uniacid) ? intval($uniacid) : $_W['uniacid'];
-	$coupon = pdo_fetch("SELECT couponid,credittype,credit,title,description,discount,`condition`,starttime,endtime,`limit`,amount,dosage FROM " . tablename('activity_coupon') . " WHERE `type` = 2 AND `couponid` = :couponid AND uniacid = :uniacid LIMIT 1", array(':couponid' => $couponid, ':uniacid' => $uniacid));
+	$coupon = pdo_fetch("SELECT couponid,couponsn,credittype,credit,title,description,discount,`condition`,starttime,endtime,`limit`,amount,dosage FROM " . tablename('activity_coupon') . " WHERE `type` = 2 AND `couponid` = :couponid AND uniacid = :uniacid LIMIT 1", array(':couponid' => $couponid, ':uniacid' => $uniacid));
 	if (!empty($coupon)) {
 		$coupon['residue'] = $coupon['amount'] - $coupon['dosage'];
 		if ($coupon['residue'] < 0) {

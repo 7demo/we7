@@ -416,6 +416,14 @@ if($do == 'uninstall') {
 			if(!is_error($info)) {
 				$packet = cloud_m_build($module['name']);
 				$manifest = ext_module_manifest_parse($packet['manifest']);
+								if ($packet['sql']) {
+					pdo_run($packet['uninstall']);
+				} elseif ($packet['scripts']) {
+					$uninstallFile = $modulepath . TIMESTAMP . '.php';
+					file_put_contents($uninstallFile, $packet['scripts']);
+					include_once $uninstallFile;
+					unlink($uninstallFile);
+				}
 			} else {
 				message($info['message'], '', 'error');
 			}

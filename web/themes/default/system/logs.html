@@ -46,7 +46,11 @@
 					<div class="form-group">
 						<label class="col-xs-12 col-sm-3 col-md-2 col-lg-1 control-label">日期选择</label>
 						<div class="col-sm-6 col-lg-8 col-xs-12">
-							{php echo tpl_form_field_date('searchtime', date('Y-m-d H:i',time()))}
+							<select name="searchtime" class="form-control">
+							{loop $tree $row}
+							<option value="{$row}" {if $_GPC['searchtime'] == $row}selected{/if}>{$row}</option>
+							{/loop}
+						</select>
 						</div>
 						<div class="pull-right col-xs-12 col-sm-1 col-lg-2">
 							<button class="btn btn-default"><i class="fa fa-search"></i> 搜索</button>

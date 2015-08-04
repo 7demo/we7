@@ -50,6 +50,7 @@ if($_GPC['done'] == '1') {
 				$ret['type'] = $log['type'];
 				$ret['from'] = 'return';
 				$ret['tid'] = $log['tid'];
+				$ret['uniontid'] = $log['uniontid'];
 				$ret['user'] = $log['openid'];
 				$ret['fee'] = $log['fee'];
 				$ret['tag'] = $tag;
@@ -84,7 +85,6 @@ $sql = 'SELECT `key`,`secret` FROM ' . tablename('account_wechats') . ' WHERE `a
 $row = pdo_fetch($sql, array(':acid' => $wechat['account']));
 $wechat['appid'] = $row['key'];
 $wechat['secret'] = $row['secret'];
-
 $wOpt = wechat_build($params, $wechat);
 if (is_error($wOpt)) {
 	if ($wOpt['message'] == 'invalid out_trade_no' || $wOpt['message'] == 'OUT_TRADE_NO_USED') {

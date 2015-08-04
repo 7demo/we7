@@ -1,17 +1,12 @@
 {template 'common/header'}
 <ul class="nav nav-tabs">
 	<li{if $do == 'mail'} class="active"{/if}><a href="{php echo url('profile/notify/mail')}">邮件通知</a></li>
-	<li{if $do == 'sms'} class="active"{/if}><a href="{php echo url('profile/notify/sms')}">短信通知</a></li>
 	<li{if $do == 'wechat'} class="active"{/if}><a href="{php echo url('mc/mass')}">微信通知</a></li>
-	<li{if $do == 'yixin'} class="active"{/if}><a href="{php echo url('profile/notify/yixin')}">易信通知</a></li>
-	<li{if $do == 'app'} class="active"{/if}><a href="{php echo url('profile/notify/app')}">自有APP通知(未开放)</a></li>
 </ul>
 <script type="text/javascript">
-	require(['jquery'], function($){
-		{if $notify['mail']['smtp']['type'] == 'custom'}
-			$("#smtp").show();
-		{/if}
-	});
+	{if $notify['mail']['smtp']['type'] == 'custom'}
+		$("#smtp").show();
+	{/if}
 </script>
 <div class="main">
 	<form id="payform" action="{php echo url('profile/notify')}" method="post" class="form-horizontal form">
@@ -94,90 +89,9 @@
 				<input type="hidden" name="do" value="mail">
 			</div>
 		</div>
-
-	{elseif $do == 'sms'}
-		<div class="panel panel-default" >
-			<div class="panel-heading">
-				短信(SMS)通知选项
-			</div>
-			<div class="panel-body">
-				<div class="form-group">
-					<label class="col-xs-12 col-sm-3 col-md-2 control-label">剩余短信条数</label>
-					<div class="col-sm-9 col-xs-12">
-						<p class="form-control-static">{$notify['sms']['balance']} 条</p>
-						<span class="help-block">购买短信数量, 请联系系统管理员</span>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-xs-12 col-sm-3 col-md-2 control-label">短信签名</label>
-					<div class="col-sm-9 col-xs-12">
-						<p class="form-control-static">{$notify['sms']['signature']}</p>
-						<span class="help-block">修改短信签名, 请联系系统管理员</span>
-					</div>
-				</div>
-				<input type="hidden" name="do" value="sms">
-			</div>
-		</div>
-
-	{elseif $do == 'wechat'}
-		<div class="panel panel-default" >
-			<div class="panel-heading">
-				微信通知选项
-			</div>
-			<div class="panel-body">
-				<div class="form-group">
-					<label class="col-xs-12 col-sm-3 col-md-2 control-label">是否开启</label>
-					<div class="col-sm-9 col-xs-12">
-						<label class="radio-inline"><input type="radio" value="1" {if $notify['wechat']['switch'] == '1'}checked{/if} name="switch" >开启</label>
-						<label class="radio-inline"><input type="radio" value="0" {if $notify['wechat']['switch'] == '0'}checked{/if} name="switch" >关闭</label>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-xs-12 col-sm-3 col-md-2 control-label">请选择公众号</label>
-					<div class="col-sm-9 col-xs-12">
-						{if $acid}
-						{loop $acid $li}
-						<label class="checkbox-inline"><input type="checkbox" value="{$li['acid']}"  {if $li['is_open'] == '1'}checked{/if} name="item[]" >{$li['name']}</label>
-						{/loop}
-						{else}
-						<p class="form-control-static">暂无支持的公众号</p>
-						{/if}
-					</div>
-				</div>
-				<input type="hidden" name="do" value="wechat">
-			</div>
-		</div>
-
-	{elseif $do == 'yixin'}
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				易信通知选项
-			</div>
-			<div class="panel-body">
-				<div class="form-group">
-					<label class="col-xs-12 col-sm-3 col-md-2 control-label">是否开启</label>
-					<div class="col-sm-9 col-xs-12">
-						<label class="radio-inline"><input type="radio" value="1" {if $notify['yixin']['switch'] == '1'}checked{/if} name="switch" >开启</label>
-						<label class="radio-inline"><input type="radio" value="0" {if $notify['yixin']['switch'] == '0'}checked{/if} name="switch" >关闭</label>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-xs-12 col-sm-3 col-md-2 control-label">请选择公众号</label>
-					<div class="col-sm-9 col-xs-12">
-						{if $acid}
-						{loop $acid $li}
-						<label class="checkbox-inline"><input type="checkbox" value="{$li['acid']}"  {if $li['is_open'] == '1'}checked{/if} name="item[]" >{$li['name']}</label>
-						{/loop}
-						{else}
-						<p class="form-control-static">暂无支持的公众号</p>
-						{/if}
-					</div>
-				</div>
-				<input type="hidden" name="do" value="yixin">
-			</div>
-		</div>
 	{/if}
-	{if $do != 'sms' && $do != 'app'}
+
+	{if $do != 'sms'}
 		<div class="form-group col-sm-12">
 			<button type="submit" class="btn btn-primary col-lg-1" name="submit" value="提交">提交</button>
 			<input type="hidden" name="token" value="{$_W['token']}" />

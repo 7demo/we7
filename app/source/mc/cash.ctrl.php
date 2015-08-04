@@ -35,7 +35,6 @@ $type = in_array($do, $dos) ? $do : '';
 if(empty($type)) {
 	message('支付方式错误,请联系商家', '', 'error');
 }
-
 if(!empty($type)) {
 	$sql = 'SELECT * FROM ' . tablename('core_paylog') . ' WHERE `uniacid`=:uniacid AND `module`=:module AND `tid`=:tid';
 	$pars  = array();
@@ -51,6 +50,8 @@ if(!empty($type)) {
 		$log = null;
 	}
 	if(empty($log)) {
+		$moduleid = pdo_fetchcolumn("SELECT mid FROM ".tablename('modules')." WHERE name = :name", array(':name' => $params['module']));
+		$moduleid = empty($moduleid) ? '000000' : sprintf("%06d", $moduleid);
 		$fee = $params['fee'];
 		$record = array();
 		$record['uniacid'] = $_W['uniacid'];
@@ -58,9 +59,9 @@ if(!empty($type)) {
 		$record['module'] = $params['module'];
 		$record['type'] = $type;
 		$record['tid'] = $params['tid'];
+		$record['uniontid'] = date('YmdHis').$moduleid.random(8,1);
 		$record['fee'] = $fee;
 		$record['status'] = '0';
-
 		$record['is_usecard'] = 0;
 		$record['card_id'] = 0;
 		$record['card_fee'] = $fee;
@@ -128,6 +129,7 @@ if(!empty($type)) {
 	}
 	$ps = array();
 	$ps['tid'] = $log['plid'];
+	$ps['uniontid'] = $log['uniontid'];
 	$ps['user'] = $_W['fans']['from_user'];
 	$ps['fee'] = $log['card_fee'];
 	$ps['title'] = $params['title'];

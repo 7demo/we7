@@ -40,7 +40,7 @@ $multi['site_info'] = @iunserializer($multi['site_info']);
 $multi['quickmenu'] = @iunserializer($multi['quickmenu']);
 
 $styleid = !empty($_GPC['s']) ? intval($_GPC['s']) : intval($multi['styleid']);
-$style = pdo_fetch("SELECT * FROM ".tablename('site_styles')." WHERE id = :id", array(':id' => $styleid));
+$style = pdo_fetch("SELECT * FROM ".tablename('site_styles')." WHERE id = :id AND uniacid=:uniacid", array(':id' => $styleid, ':uniacid' => $_W['uniacid']));
 if (empty($style)) {
 	exit('没有找到指定微站风格.');
 }

@@ -161,6 +161,7 @@ if($do == 'del') {
 	}
 	pdo_delete('activity_coupon_allocation', array('uniacid' => $_W['uniacid'],'couponid' => $id));
 	pdo_delete('activity_coupon', array('couponid' => $id, 'uniacid' => $_W['uniacid']));
+	pdo_delete('activity_coupon_record', array('uniacid' => $_W['uniacid'], 'couponid' => $id));
 	message('折扣券删除成功！',url('activity/coupon/display'), 'success');
 }
 

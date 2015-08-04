@@ -10,6 +10,7 @@ $do = !empty($_GPC['do']) ? $_GPC['do'] : 'display';
 if ($do == 'post') {
 	$_W['page']['title'] = '编辑字段 - 用户设置 - 用户管理';
 	$id = intval($_GPC['id']);
+
 	if (checksubmit('submit')) {
 		if (empty($_GPC['title'])) {
 			message('抱歉，请填写资料名称！');
@@ -23,10 +24,18 @@ if ($do == 'post') {
 			'showinregister' => intval($_GPC['showinregister']),
 			'required' => intval($_GPC['required']),
 		);
-		pdo_update('profile_fields', $data, array('id' => $id));
+		if (empty($id)) {
+			$data['field'] = trim($_GPC['field']);
+			pdo_insert('profile_fields', $data);
+		} else {
+			pdo_update('profile_fields', $data, array('id' => $id));
+		}
 		message('更新粉丝字段成功！', url('user/fields'));
 	}
-	$item = pdo_fetch("SELECT * FROM ".tablename('profile_fields')." WHERE id = :id", array(':id' => $id));
+
+	if (!empty($id)) {
+		$item = pdo_fetch("SELECT * FROM ".tablename('profile_fields')." WHERE id = :id", array(':id' => $id));
+	}
 	template('user/fields');
 } else {
 	$_W['page']['title'] = '字段管理 - 用户设置 - 用户管理';

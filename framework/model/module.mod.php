@@ -73,7 +73,7 @@ function module_entries($name, $types = array(), $rid = 0, $args = null) {
 			if(is_array($ret)) {
 				foreach($ret as $et) {
 					$et['url'] .= '&__title=' . urlencode($et['title']);
-					$entries[$bind['entry']][] = array('title' => $et['title'], 'url' => $et['url'], 'from' => 'call','direct' => $et['direct']);
+					$entries[$bind['entry']][] = array('title' => $et['title'], 'url' => $et['url'], 'from' => 'call');
 				}
 			}
 		} else {
@@ -99,7 +99,7 @@ function module_entries($name, $types = array(), $rid = 0, $args = null) {
 			if($bind['entry'] == 'shortcut') {
 				$url = murl("entry", array('eid' => $bind['eid']));
 			}
-			$entries[$bind['entry']][] = array('eid' => $bind['eid'], 'title' => $bind['title'], 'url' => $url, 'from' => 'define', 'direct' => $bind['direct']);
+			$entries[$bind['entry']][] = array('eid' => $bind['eid'], 'title' => $bind['title'], 'url' => $url, 'from' => 'define');
 		}
 	}
 	return $entries;

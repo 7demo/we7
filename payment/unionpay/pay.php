@@ -20,10 +20,9 @@ $payment = $setting['payment']['unionpay'];
 require '__init.php';
 
 if (!empty($_POST) && verify($_POST) && $_POST['respMsg'] == 'success') {
-	$plid = substr($_POST['orderId'], 8);
-	$sql = 'SELECT * FROM ' . tablename('core_paylog') . ' WHERE `plid`=:plid';
+	$sql = 'SELECT * FROM ' . tablename('core_paylog') . ' WHERE `uniontid`=:uniontid';
 	$params = array();
-	$params[':plid'] = $plid;
+	$params[':uniontid'] = $_POST['orderId'];
 	$log = pdo_fetch($sql, $params);
 	if(!empty($log) && $log['status'] == '0') {
 		$log['tag'] = iunserializer($log['tag']);
@@ -63,6 +62,7 @@ if (!empty($_POST) && verify($_POST) && $_POST['respMsg'] == 'success') {
 			$ret['type'] = $log['type'];
 			$ret['from'] = 'return';
 			$ret['tid'] = $log['tid'];
+			$ret['uniontid'] = $log['uniontid'];
 			$ret['user'] = $log['openid'];
 			$ret['fee'] = $log['fee'];
 			$ret['tag'] = $log['tag'];
@@ -98,7 +98,7 @@ $params = array(
 	'channelType' => '08',
 	'accessType' => '0',
 	'merId' => SDK_MERID,
-	'orderId' => date('Ymd') . $paylog['plid'],
+	'orderId' => $paylog['uniontid'],
 	'txnTime' => date('YmdHis'),
 	'txnAmt' => $paylog['fee'] * 100,
 	'currencyCode' => '156',
